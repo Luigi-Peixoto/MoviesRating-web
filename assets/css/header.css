@@ -1,6 +1,6 @@
 header {
     display: flex;
-    background-color: darkcyan;
+    background-color:darkred;
     width: 100%;
     padding: 15px;
     align-items: center;
@@ -13,21 +13,33 @@ header a {
 }
 
 #logo {
-    width: 5%;
+    width: 7%;
     margin-left: 5%;
 }
 
 #searchbar {
-    width: 50%;
+    width: 40%;
     display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 20px;
+    padding: 5px 10px;
+    background-color: #f6f6f6;
 }
 
-#searchbar-text {
-    width: 100%;
-    padding: 10px;
-    border-radius: 10px;
+.searchbar-text {
+    flex: 1;
+    font-size: 16px;
+    font-family: 'Lexend', sans-serif;
+    color: #333333;
+    margin-left: 1%;
+    outline: none;
+    border: none;
+    background: transparent;
 }
-
+.searchbar-text::placeholder, .searchbar-icon {
+    color: rgba(0,0,0,0.5);
+}
 #authentication {
     margin-right: 5%;
 }
