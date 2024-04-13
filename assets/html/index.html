@@ -4,29 +4,36 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/header.css">
+    <link rel="stylesheet" href="../css/navbar.css">
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/footer.css">
+    <link rel="stylesheet" href="../css/header.css">
     <title>Movie Rating Website</title>
 </head>
 
 <body>
     <header>
-        <img src="https://pngimg.com/d/walt_disney_PNG20.png" alt="Logo" style="width: 100px">
-        <input type="text" placeholder="Pesquisar filme ou série...">
-        <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+        <img src="https://pngimg.com/d/walt_disney_PNG20.png" alt="Logo" style="width: 100px" id="logo">
+        <span id="searchbar">
+            <input type="text" placeholder="Pesquisar filme ou série...">
+            <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+        </span>
 
-        <aside id="autentication">
+        <span id="authentication">
             <a href="#login">Login</a>
             <a href="#register">Register</a>
-        </aside>
-
-        <nav>
-            <ul>
-                <li><a href="index.html">Ínicio</a></li>
-                <li><a href="movies.html">Filmes</a></li>
-                <li><a href="shows.html">Séries</a></li>
-                <li><a href="rate.html">Avaliar</a></li>
-            </ul>
-        </nav>
+        </span>
     </header>
+
+    <nav>
+        <ul style="list-style-type: none;">
+            <li><a href="index.html">Ínicio</a></li>
+            <li><a href="movies.html">Filmes</a></li>
+            <li><a href="shows.html">Séries</a></li>
+            <li><a href="rate.html">Avaliar</a></li>
+        </ul>
+    </nav>
 
     <main>
         <h1>Bem-vindo ao melhor site de filmes e séries do Brasil!</h1>
@@ -75,7 +82,7 @@
                         <h3 class="title">Peaky Blinders</h3>
                         <div class="backdrop"></div>
                     </div>
-                    
+
                     <div class="card">
                         <img class="background"
                             src="https://s2-techtudo.glbimg.com/6LZi8B15b7x8GZG9ry8sngspPp8=/0x0:1280x720/1000x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_08fbf48bc0524877943fe86e43087e7a/internal_photos/bs/2023/m/l/5PNMixTzqXXITYvs02jQ/tileburnedin.jfif"
