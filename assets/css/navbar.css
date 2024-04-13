@@ -1,0 +1,21 @@
+nav {
+    display: flex;
+    background-color: aqua;
+    margin: 0px;
+    padding: 10px;
+}
+
+#navbar-list {
+    list-style-type: none;
+    margin: 0px;
+    padding: 0px;
+}
+
+.navbar-item {
+    font-size: 25px;
+    display: inline-block;
+    height: 100%;
+    padding: 0 10px;
+    background-color: white;
+}
+
