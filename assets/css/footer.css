@@ -1,0 +1,8 @@
+footer {
+    font-family: serif;
+    position: absolute;
+    bottom: 0px;
+    background-color: darkred;
+    width: 100%;
+    text-align: center;
+}

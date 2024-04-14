@@ -22,7 +22,7 @@ nav a{
     padding: 5px 20px;
     margin: 0px 10px;
     background-color:rgb(190, 46, 46);
-    border-radius: 5px;
+    border-radius: 10px;
 }
 
 .navbar-item a {
@@ -30,6 +30,6 @@ nav a{
 }
 
 .navbar-item:hover {
-    background-color: rgb(219, 75, 75);
+    box-shadow: inset 0px 0px 1px 1px white;
 }
 
