@@ -14,6 +14,7 @@ img {
 }
 
 .card {
+  max-width: 40%;
   min-width: 70px;
   height: 100%;
   border-radius: 30px;
@@ -28,13 +29,8 @@ img {
 
   --transition-timing: 0.35s;
 }
-.card:hover {
-  flex-grow: 7;
-}
 
 .card > .background {
-  position: absolute;
-  inset: 0;
   object-fit: cover;
   object-position: center;
   filter: brightness(0.4);
@@ -44,7 +40,6 @@ img {
 .card:hover > .background {
   filter: brightness(1);
 }
-
 .card > .card-content {
   display: none;
   align-items: center;
@@ -52,15 +47,18 @@ img {
   transition: var(--transition-timing);
   z-index: 10;
 }
-.card:hover > .card-content {
-    height: 100%;
-    display: flex;
-    overflow: hidden;
-    flex-direction: column;
-    background-color: lightgray;
+.card > .card-content > h3,p{
+  color: black;
 }
-
+.card:hover > .card-content{
+  height: 100%;
+  background-color: lightgray;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+}
 .card-content > * {
   transition: var(--transition-timing);
 }
-
