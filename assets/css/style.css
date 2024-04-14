@@ -1,14 +1,19 @@
+@font-face {
+    font-family: Restora;
+    src: "../fonts/Restora.otf";
+}
+
+@font-face {
+    font-family: Okta Neue;
+    src: "../fonts/Okta Neue.otf";
+}
+
 * {
     box-sizing: border-box;
-    font-family: sans-serif;
     color:beige;
 }
 
 body {
     margin: 0;
     background-color: rgb(27, 23, 20);
-}
-
-p {
-    font-family: serif;
 }
