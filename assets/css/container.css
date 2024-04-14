@@ -21,7 +21,6 @@ img {
   overflow: hidden;
 
   display: flex;
-  align-items: flex-end;
   flex-grow: 1;
   cursor: pointer;
   position: relative;
@@ -31,10 +30,9 @@ img {
 }
 
 .card > .background {
+  min-width: 50%;
   object-fit: cover;
-  object-position: center;
   filter: brightness(0.4);
-  z-index: -1;
   transition: var(--transition-timing) ease;
 }
 .card:hover > .background {
@@ -43,12 +41,10 @@ img {
 .card > .card-content {
   display: none;
   align-items: center;
+  max-width: 50%;
   overflow: hidden;
   transition: var(--transition-timing);
   z-index: 10;
-}
-.card > .card-content > h3,p{
-  color: black;
 }
 .card:hover > .card-content{
   height: 100%;
@@ -58,6 +54,9 @@ img {
   justify-content: space-between;
   align-items: center;
   padding: 10px;
+}
+.card > .card-content > h3,p{
+  color: black;
 }
 .card-content > * {
   transition: var(--transition-timing);
