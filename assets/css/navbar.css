@@ -3,11 +3,8 @@ nav {
     background-color:brown;
     margin: 0px;
     padding: 0px;
+    justify-content: space-around;
     font-family: Okta Neue;
-}
-
-nav a{
-    text-decoration: none;
 }
 
 #navbar-list {
@@ -21,15 +18,33 @@ nav a{
     display: inline-block;
     padding: 5px 20px;
     margin: 0px 10px;
-    background-color:rgb(190, 46, 46);
+    /*background-color:rgb(190, 46, 46); */
     border-radius: 10px;
 }
 
 .navbar-item a {
     color: inherit;
+    position: relative;
+    text-decoration: none;
+    padding: 0 10px;
 }
-
+a::after{
+    content: "";
+    position: absolute;
+    background-color: #eee;
+    height: 3px;
+    width: 0;
+    left: 0;
+    bottom: -4px;
+    transition: 0.3s;
+}
+a:hover::after {
+    color: black;
+    width: 100%;
+}
 .navbar-item:hover {
-    box-shadow: inset 0px 0px 1px 1px white;
+    color: #eee;
 }
-
+/*.navbar-item:hover {
+    /*box-shadow: inset 0px 0px 1px 1px white;
+}*/
