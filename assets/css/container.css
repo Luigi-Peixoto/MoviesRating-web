@@ -60,3 +60,12 @@ img {
 .card-content > * {
   transition: var(--transition-timing);
 }
+
+@media screen and (max-width: 800px) {
+  .card > .background {
+    filter: brightness(1);
+  }
+  .card:hover > .card-content {
+    display: none;
+  }
+}
