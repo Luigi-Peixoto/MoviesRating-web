@@ -9,13 +9,12 @@ img {
   height: 340px;
   display: flex;
   align-items: center;
-  gap: 10px;
-  margin-inline: 50px;
+  gap: 1%;
+  margin-inline: 1%;
 }
 
 .card {
   max-width: 40%;
-  min-width: 70px;
   height: 100%;
   border-radius: 30px;
   overflow: hidden;
