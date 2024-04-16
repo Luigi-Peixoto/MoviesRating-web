@@ -1,5 +1,6 @@
 header {
     display: flex;
+    flex-wrap: wrap;
     background-color:darkred;
     width: 100%;
     padding: 15px;
@@ -40,6 +41,7 @@ header a {
 .searchbar-text::placeholder, .searchbar-icon {
     color: rgba(0,0,0,0.5);
 }
+
 #authentication {
     margin-right: 5%;
 }
@@ -50,8 +52,26 @@ header a {
 }
 
 .special {
-    padding: 10px 25px;
+    padding: 10px 20px;
     background-color: lightgray;
     color:black;
     margin-left: 10px;
+}
+
+@media screen and (max-width: 800px) {
+
+    #logo {
+        width: 20%;
+    }
+    
+    #searchbar {
+        width: 100%;
+        display: block;
+        order: 3;
+        margin-top: 20px;
+    }
+    
+    #authentication {
+        width: 20%;
+    }
 }
