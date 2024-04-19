@@ -60,6 +60,13 @@ header a {
     margin-left: 10px;
 }
 
+#login-dropdown {
+    position: absolute;
+    top: 70px;
+    right: 2%;
+    z-index: 2;
+}
+
 @media screen and (max-width: 800px) {
 
     #logo {

@@ -1,0 +1,9 @@
+body {
+    background-color: darkred;
+    color:beige
+}
+
+#login-form input {
+    width: 50%;
+    float: right;
+}
