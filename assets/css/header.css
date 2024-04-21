@@ -59,7 +59,9 @@ header a {
     color:black;
     margin-left: 10px;
 }
-
+.special:hover {
+    opacity: 0.9;
+}
 #login-dropdown {
     position: absolute;
     top: 70px;
