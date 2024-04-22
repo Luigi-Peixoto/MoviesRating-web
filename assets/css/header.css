@@ -59,6 +59,15 @@ header a {
     color:black;
     margin-left: 10px;
 }
+.special:hover {
+    opacity: 0.9;
+}
+#login-dropdown {
+    position: absolute;
+    top: 70px;
+    right: 2%;
+    z-index: 2;
+}
 
 @media screen and (max-width: 800px) {
 
