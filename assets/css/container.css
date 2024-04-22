@@ -68,4 +68,10 @@ img {
   .card:hover > .card-content {
     display: none;
   }
+  .card {
+    border-radius: 10px;
+  }
+  .container {
+    height: 200px;
+  }
 }
