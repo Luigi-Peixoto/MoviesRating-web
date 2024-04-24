@@ -62,11 +62,20 @@ header a {
 .special:hover {
     opacity: 0.9;
 }
+
+#login-dropdown-button {
+    background: none;
+    border: none;
+    font-size: 17px;
+    font-family: Okta Neue;
+}
+
 #login-dropdown {
     position: absolute;
     top: 70px;
     right: 2%;
     z-index: 2;
+    display: none;
 }
 
 @media screen and (max-width: 800px) {

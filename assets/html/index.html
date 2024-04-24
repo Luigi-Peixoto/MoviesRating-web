@@ -27,7 +27,7 @@
                 <iframe src="../html/login.html" title="Rate - Login Page" style="height: 120px;"></iframe>
             </div>
 
-            <a href="#login" class="buttonAuthentication">Login</a>
+            <button id="login-dropdown-button" class="buttonAuthentication">Login</button>
             <a href="register.html" class="buttonAuthentication special">Register</a>
         </span>
     </header>
@@ -178,6 +178,20 @@
     <footer>
         <p>Por Elson Freire e Luigi Soares - &#169 Todos os direitos reservados</p>
     </footer>
+    <script>
+        
+        let loginDropdownIsOpen = false;
+        const loginBtn = document.getElementById("login-dropdown-button");
+        const loginDropdown = document.getElementById("login-dropdown");
+        loginBtn.addEventListener("click", function(e) {
+            if (loginDropdownIsOpen) {
+                loginDropdown.style.setProperty("display", "none");
+            } else {
+                loginDropdown.style.setProperty("display", "block");
+            }
+            loginDropdownIsOpen = !loginDropdownIsOpen;
+        });
+    </script>
 </body>
 
 </html>
