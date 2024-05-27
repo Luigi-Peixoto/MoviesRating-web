@@ -1,28 +1,79 @@
 import APIKey from '../config/key.js';
 const imagePath = 'https://image.tmdb.org/t/p/w500';
 const topContent = document.getElementById("top-content");
-let topMovies = [];
-let topSeries = [];
+let movies = [];
 
-document.addEventListener("DOMContentLoaded", function() {
-    
-});
+
 fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${APIKey}&language=pt-BR`)
   .then(response => response.json())
   .then(data => {
-        topMovies = data.results.slice(0, 6).map(movie => ({
+      movies = data.results.slice(0, 6).map(movie => ({
         title: movie.title,
         rating: movie.vote_average,
         image: `https://image.tmdb.org/t/p/w500/${movie.poster_path}`,
         description: movie.overview
       }));
-      console.log(topMovies)
-      console.log(topMovies.forEach(e =>{console.log(e.title)}))
-      appendSection("Top Filmes", topMovies)
+      
+      console.log(movies)
+      console.log(movies.forEach(e =>{console.log(e.title)}))
+      appendSection("Filmes Populares", movies)
   })
   .catch(error => {
     console.error('Ocorreu um erro ao obter os filmes populares')
   })
+
+  fetch(`https://api.themoviedb.org/3/movie/top_rated?api_key=${APIKey}&language=pt-BR`)
+  .then(response => response.json())
+  .then(data => {
+    movies = data.results.slice(0, 6).map(movie => ({
+        title: movie.title,
+        rating: movie.vote_average,
+        image: `https://image.tmdb.org/t/p/w500/${movie.poster_path}`,
+        description: movie.overview
+      }));
+      console.log(movies)
+      console.log(movies.forEach(e =>{console.log(e.title)}))
+      appendSection("Melhores Filmes", movies)
+  })
+  .catch(error => {
+    console.error('Ocorreu um erro ao obter os filmes populares')
+  })
+
+
+  fetch(`https://api.themoviedb.org/3/tv/popular?api_key=${APIKey}&language=pt-BR`)
+  .then(response => response.json())
+  .then(data => {
+    movies = data.results.slice(0, 6).map(movie => ({
+        title: movie.name,
+        rating: movie.vote_average,
+        image: `https://image.tmdb.org/t/p/w500/${movie.poster_path}`,
+        description: movie.overview
+      }));
+      console.log(movies)
+      console.log(movies.forEach(e =>{console.log(e.title)}))
+      appendSection("Series Populares", movies)
+  })
+  .catch(error => {
+    console.error('Ocorreu um erro ao obter as series populares')
+  })
+
+  fetch(`https://api.themoviedb.org/3/tv/top_rated?api_key=${APIKey}&language=pt-BR`)
+  .then(response => response.json())
+  .then(data => {
+    movies = data.results.slice(0, 6).map(movie => ({
+        title: movie.name,
+        rating: movie.vote_average,
+        image: `https://image.tmdb.org/t/p/w500/${movie.poster_path}`,
+        description: movie.overview
+      }));
+      console.log(movies)
+      console.log(movies.forEach(e =>{console.log(e.title)}))
+      appendSection("Melhores Series", movies)
+  })
+  .catch(error => {
+    console.error('Ocorreu um erro ao obter as melhores séries')
+  })
+
 function appendSection(title, items) {
     const section = document.createElement("section");
     
@@ -35,7 +86,7 @@ function appendSection(title, items) {
     
     items.forEach(item => {
         console.log(item.title);
-        const card = createCard(item.title, item.rating.toFixed(0), item.image, item.description);
+        const card = createCard(item.title, item.rating.toFixed(1), item.image, item.description);
         container.appendChild(card);
     });
     

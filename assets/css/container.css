@@ -31,7 +31,7 @@ img {
 .card > .background {
   min-width: 50%;
   object-fit: cover;
-  filter: brightness(0.4);
+  filter: brightness(0.7);
   transition: var(--transition-timing) ease;
 }
 .card:hover > .background {
