@@ -29,16 +29,21 @@
             <span class="searchbar-icon material-symbols-outlined">Search</span>
             <input type="search" class="searchbar-text" placeholder="Pesquisar filme ou série...">
         </span>
-
+        
         <span id="authentication">
-            <a href="#login" class="buttonAuthentication">Login</a>
-            <a href="#register" class="buttonAuthentication special">Register</a>
+            
+            <div id="login-dropdown">
+                <iframe src="../html/login.html" title="Rate - Login Page" style="height: 120px;"></iframe>
+            </div>
+            
+            <button id="login-dropdown-button" class="buttonAuthentication">Login</button>
+            <a href="/register" class="buttonAuthentication special">Register</a>
         </span>
     </header>
-
+    
     <nav>
         <ul id="navbar-list">
-            <li class="navbar-item"><a href="index.html">Início</a></li>
+            <li class="navbar-item"><a href="/">Início</a></li>
             <li class="navbar-item"><a href="movies.html">Filmes</a></li>
             <li class="navbar-item"><a href="shows.html">Séries</a></li>
             <li class="navbar-item"><a href="rate.html">Avaliar</a></li>

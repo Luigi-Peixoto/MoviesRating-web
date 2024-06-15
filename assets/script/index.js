@@ -24,7 +24,7 @@ function fetchMovies(url, sectionTitle, type) {
 const urls = [
   { url: `https://api.themoviedb.org/3/movie/popular?api_key=${APIKey}&language=pt-BR`, title: "Filmes Populares" , type: `movie`},
   { url: `https://api.themoviedb.org/3/movie/top_rated?api_key=${APIKey}&language=pt-BR`, title: "Melhores Filmes", type: `movie`},
-  { url: `https://api.themoviedb.org/3/tv/popular?api_key=${APIKey}&language=pt-BR`, title: "Series Populares", type: `serie`},
+  { url: `https://api.themoviedb.org/3/tv/popular?api_key=${APIKey}`, title: "Series Populares", type: `serie`},
   { url: `https://api.themoviedb.org/3/tv/top_rated?api_key=${APIKey}&language=pt-BR`, title: "Melhores Series", type: `serie` }
 ];
 
@@ -41,7 +41,6 @@ function appendSection(title, items, type) {
     container.className = "container";
     
     items.forEach(item => {
-        console.log(item.title);
         const card = createCard(item.title, item.rating.toFixed(1), item.image, item.description);
         card.classList.add(type)
         container.appendChild(card);
