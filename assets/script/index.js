@@ -77,9 +77,8 @@ function createCard(title, rating, image, description) {
     
     card.appendChild(cardContent);
 
-    // Adicionar evento de clique para redirecionar ao link com o título do card
     card.addEventListener('click', () => {
-      const formattedTitle = title.replace(/\s+/g, '-').toLowerCase(); // Formata o título para a URL
+      const formattedTitle = title.replace(/\s+/g, '-').toLowerCase();
       card.classList.contains('movie') ? window.location.href = `${window.location.origin}/movie/${formattedTitle}` 
       : window.location.href = `${window.location.origin}/serie/${formattedTitle}`;
     });

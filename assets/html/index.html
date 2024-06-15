@@ -2,6 +2,7 @@
 <html lang="pt-br">
 
 <head>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <link rel="stylesheet" href="../css/style.css">
@@ -11,7 +12,7 @@
     <link rel="stylesheet" href="../css/footer.css">
     <link rel="stylesheet" href="../css/container.css">
     <script type="module" src="../script/index.js"></script>
-    <script type="module" src="../script/script.js"></script>
+    <script type="module" src="../script/login.js"></script>
     <title>Rate - Movie Rating Website</title>
 </head>
 
@@ -55,20 +56,6 @@
     <footer>
         <p>Por Elson Freire e Luigi Soares - &#169 Todos os direitos reservados</p>
     </footer>
-    <script>
-        
-        let loginDropdownIsOpen = false;
-        const loginBtn = document.getElementById("login-dropdown-button");
-        const loginDropdown = document.getElementById("login-dropdown");
-        loginBtn.addEventListener("click", function(e) {
-            if (loginDropdownIsOpen) {
-                loginDropdown.style.setProperty("display", "none");
-            } else {
-                loginDropdown.style.setProperty("display", "block");
-            }
-            loginDropdownIsOpen = !loginDropdownIsOpen;
-        });
-    </script>
 </body>
 
 </html>
