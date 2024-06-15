@@ -1,0 +1,23 @@
+{
+  "name": "moviesrating-web",
+  "version": "1.0.0",
+  "description": "Web system of Movies rating with JavaScript, HTML and CSS",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/luigiisp/MoviesRating-web.git"
+  },
+  "author": "Elson Freire, Luigi Soares",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/luigiisp/MoviesRating-web/issues"
+  },
+  "homepage": "https://github.com/luigiisp/MoviesRating-web#readme",
+  "dependencies": {
+    "axios": "^1.7.2",
+    "express": "^4.19.2"
+  }
+}

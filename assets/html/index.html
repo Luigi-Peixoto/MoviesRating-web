@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-br">
 
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -10,169 +10,46 @@
     <link rel="stylesheet" href="../css/main.css">
     <link rel="stylesheet" href="../css/footer.css">
     <link rel="stylesheet" href="../css/container.css">
+    <script type="module" src="../script/index.js"></script>
+    <script type="module" src="../script/script.js"></script>
     <title>Rate - Movie Rating Website</title>
 </head>
 
 <body>
+    
     <header>
         <img src="../images/Logo.png" alt="Logo" id="logo">
         <span id="searchbar">
             <span class="searchbar-icon material-symbols-outlined">Search</span>
             <input type="search" class="searchbar-text" placeholder="Pesquisar filme ou série...">
         </span>
-
+        
         <span id="authentication">
             
             <div id="login-dropdown">
                 <iframe src="../html/login.html" title="Rate - Login Page" style="height: 120px;"></iframe>
             </div>
-
+            
             <button id="login-dropdown-button" class="buttonAuthentication">Login</button>
-            <a href="register.html" class="buttonAuthentication special">Register</a>
+            <a href="/register" class="buttonAuthentication special">Register</a>
         </span>
     </header>
-
+    
     <nav>
         <ul id="navbar-list">
-            <li class="navbar-item"><a href="index.html">Início</a></li>
+            <li class="navbar-item"><a href="/">Início</a></li>
             <li class="navbar-item"><a href="movies.html">Filmes</a></li>
             <li class="navbar-item"><a href="shows.html">Séries</a></li>
             <li class="navbar-item"><a href="rate.html">Avaliar</a></li>
         </ul>
     </nav>
-
+    
     <main>
-
+        
         <h1>Não sabe o que assistir?</h1>
         <h3>Filmes mais bem avaliados pelos membros do site! Você não vai se arrepender..</h3>
-      
-        <article>
-            <section>
-                <h2>Top Filmes</h2>
-
-                <!--container dos filmes-->
-                <span class="container">
-                    <div class="card">
-                        <img class="background" src="https://www.sonypictures.com.br/sites/brazil/files/2022-03/KEY%20ART_SPIDER%20NO%20WAY%20HOME.JPG" alt="">
-                
-                        <div class="card-content">                
-                            <h3 class="title">Homem Aranha: Sem Volta Para Casa</h3>
-                            <p>3 Estrelas</p>
-                            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. 
-                              Molestias in tempora facilis neque fugiat veniam id, sapiente dolorem distinctio 
-                              velit repellendus tempore, voluptas quo incidunt nemo pariatur est similique magni.</p>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <img class="background" src="https://www.sonypictures.com.br/sites/brazil/files/2022-03/KEY%20ART_SPIDER%20NO%20WAY%20HOME.JPG" alt="">
-                
-                        <div class="card-content">                
-                            <h3 class="title">Homem Aranha: Sem Volta Para Casa</h3>
-                            <p>3 Estrelas</p>
-                            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. 
-                              Molestias in tempora facilis neque fugiat veniam id, sapiente dolorem distinctio 
-                              velit repellendus tempore, voluptas quo incidunt nemo pariatur est similique magni.</p>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <img class="background" src="https://www.sonypictures.com.br/sites/brazil/files/2022-03/KEY%20ART_SPIDER%20NO%20WAY%20HOME.JPG" alt="">
-                
-                        <div class="card-content">                
-                            <h3 class="title">Homem Aranha: Sem Volta Para Casa</h3>
-                            <p>3 Estrelas</p>
-                            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. 
-                              Molestias in tempora facilis neque fugiat veniam id, sapiente dolorem distinctio 
-                              velit repellendus tempore, voluptas quo incidunt nemo pariatur est similique magni.</p>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <img class="background" src="https://www.sonypictures.com.br/sites/brazil/files/2022-03/KEY%20ART_SPIDER%20NO%20WAY%20HOME.JPG" alt="">
-                
-                        <div class="card-content">                
-                            <h3 class="title">Homem Aranha: Sem Volta Para Casa</h3>
-                            <p>3 Estrelas</p>
-                            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. 
-                              Molestias in tempora facilis neque fugiat veniam id, sapiente dolorem distinctio 
-                              velit repellendus tempore, voluptas quo incidunt nemo pariatur est similique magni.</p>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <img class="background" src="https://www.sonypictures.com.br/sites/brazil/files/2022-03/KEY%20ART_SPIDER%20NO%20WAY%20HOME.JPG" alt="">
-                
-                        <div class="card-content">                
-                            <h3 class="title">Homem Aranha: Sem Volta Para Casa</h3>
-                            <p>3 Estrelas</p>
-                            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. 
-                              Molestias in tempora facilis neque fugiat veniam id, sapiente dolorem distinctio 
-                              velit repellendus tempore, voluptas quo incidunt nemo pariatur est similique magni.</p>
-                        </div>
-                    </div>
-                </span>
-            </section>
-
-            <section>
-                <h2>Top Séries</h2>
-
-                <!--container dos filmes-->
-                <span class="container">
-                    <div class="card">
-                        <img class="background" src="https://m.media-amazon.com/images/M/MV5BYmQ4YWMxYjUtNjZmYi00MDQ1LWFjMjMtNjA5ZDdiYjdiODU5XkEyXkFqcGdeQXVyMTMzNDExODE5._V1_.jpg" alt="">
-                
-                        <div class="card-content">                
-                            <h3 class="title">Breaking Bad</h3>
-                            <p>3 Estrelas</p>
-                            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. 
-                              Molestias in tempora facilis neque fugiat veniam id, sapiente dolorem distinctio 
-                              velit repellendus tempore, voluptas quo incidunt nemo pariatur est similique magni.</p>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <img class="background" src="https://m.media-amazon.com/images/M/MV5BYmQ4YWMxYjUtNjZmYi00MDQ1LWFjMjMtNjA5ZDdiYjdiODU5XkEyXkFqcGdeQXVyMTMzNDExODE5._V1_.jpg" alt="">
-                
-                        <div class="card-content">                
-                            <h3 class="title">Homem Aranha: Sem Volta Para Casa</h3>
-                            <p>3 Estrelas</p>
-                            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. 
-                              Molestias in tempora facilis neque fugiat veniam id, sapiente dolorem distinctio 
-                              velit repellendus tempore, voluptas quo incidunt nemo pariatur est similique magni.</p>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <img class="background" src="https://m.media-amazon.com/images/M/MV5BYmQ4YWMxYjUtNjZmYi00MDQ1LWFjMjMtNjA5ZDdiYjdiODU5XkEyXkFqcGdeQXVyMTMzNDExODE5._V1_.jpg" alt="">
-                
-                        <div class="card-content">                
-                            <h3 class="title">Homem Aranha: Sem Volta Para Casa</h3>
-                            <p>3 Estrelas</p>
-                            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. 
-                              Molestias in tempora facilis neque fugiat veniam id, sapiente dolorem distinctio 
-                              velit repellendus tempore, voluptas quo incidunt nemo pariatur est similique magni.</p>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <img class="background" src="https://m.media-amazon.com/images/M/MV5BYmQ4YWMxYjUtNjZmYi00MDQ1LWFjMjMtNjA5ZDdiYjdiODU5XkEyXkFqcGdeQXVyMTMzNDExODE5._V1_.jpg" alt="">
-                
-                        <div class="card-content">                
-                            <h3 class="title">Homem Aranha: Sem Volta Para Casa</h3>
-                            <p>3 Estrelas</p>
-                            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. 
-                              Molestias in tempora facilis neque fugiat veniam id, sapiente dolorem distinctio 
-                              velit repellendus tempore, voluptas quo incidunt nemo pariatur est similique magni.</p>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <img class="background" src="https://m.media-amazon.com/images/M/MV5BYmQ4YWMxYjUtNjZmYi00MDQ1LWFjMjMtNjA5ZDdiYjdiODU5XkEyXkFqcGdeQXVyMTMzNDExODE5._V1_.jpg" alt="">
-                
-                        <div class="card-content">                
-                            <h3 class="title">Homem Aranha: Sem Volta Para Casa</h3>
-                            <p>3 Estrelas</p>
-                            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. 
-                              Molestias in tempora facilis neque fugiat veniam id, sapiente dolorem distinctio 
-                              velit repellendus tempore, voluptas quo incidunt nemo pariatur est similique magni.</p>
-                        </div>
-                    </div>
-                </span>
-            </section>
-        </article>
+        
+        <article id="top-content"></article>
     </main>
 
     <footer>
