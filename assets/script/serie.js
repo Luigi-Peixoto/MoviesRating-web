@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
     language: 'pt-BR'
   }).toString();
     
-  const url = `https://api.themoviedb.org/3/search/movie?${queryParams}`;
+  const url = `https://api.themoviedb.org/3/search/tv?${queryParams}`;
   console.log(url);
     
   const xhr = new XMLHttpRequest();
@@ -21,22 +21,22 @@ document.addEventListener('DOMContentLoaded', () => {
   xhr.onreadystatechange = function () {
     if (xhr.readyState === XMLHttpRequest.DONE) {
       if (xhr.status === 200) {
-        const movieData = JSON.parse(xhr.responseText);
-        const movie = movieData.results && movieData.results.length > 0 ? movieData.results[0] : null;
-        if (movie) {
-          console.log(movie.title, movie.release_date, movie.overview);
+        const serieData = JSON.parse(xhr.responseText);
+        const serie = serieData.results && serieData.results.length > 0 ? serieData.results[0] : null;
+        if (serie) {
+          console.log(serie.name, serie.first_air_date, serie.overview);
         } else {
-          console.log('Filme não encontrado', xhr.status);
+          console.log('Serie não encontrado', xhr.status);
         }
       } else {
-        console.error('Erro ao buscar dados do filme:', xhr.status);
+        console.error('Erro ao buscar dados da serie:', xhr.status);
       }
     }
   };
       
   xhr.onerror = function () {
-    console.error('Erro ao buscar dados do filme:', xhr.statusText);
-    document.getElementById('movie-details').innerHTML = '<p>Erro ao buscar dados do filme.</p>';
+    console.error('Erro ao buscar dados da Serie:', xhr.statusText);
+    document.getElementById('movie-details').innerHTML = '<p>Erro ao buscar dados do serie.</p>';
   };
     
   xhr.send();

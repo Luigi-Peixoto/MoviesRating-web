@@ -13,11 +13,11 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname,'assets' , 'html', 'index.html'), (err) => {
-      if (err) {
-        res.status(500).send(err);
-      }
-    });
+  res.sendFile(path.join(__dirname,'assets' , 'html', 'index.html'), (err) => {
+    if (err) {
+      res.status(500).send(err);
+    }
+  });
 });
 
 app.get('/register', (req, res) => {
@@ -30,6 +30,14 @@ app.get('/register', (req, res) => {
 
 app.get('/movie/:title', (req, res) => {
   res.sendFile(path.join(__dirname,'assets' , 'html', 'movie.html'), (err) => {
+    if (err) {
+      res.status(500).send(err);
+    }
+  });
+});
+
+app.get('/show/:title', (req, res) => {
+  res.sendFile(path.join(__dirname,'assets' , 'html', 'serie.html'), (err) => {
     if (err) {
       res.status(500).send(err);
     }

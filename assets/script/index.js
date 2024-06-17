@@ -80,7 +80,7 @@ function createCard(title, rating, image, description) {
     card.addEventListener('click', () => {
       const formattedTitle = title.replace(/\s+/g, '-').toLowerCase();
       card.classList.contains('movie') ? window.location.href = `${window.location.origin}/movie/${formattedTitle}` 
-      : window.location.href = `${window.location.origin}/serie/${formattedTitle}`;
+      : window.location.href = `${window.location.origin}/show/${formattedTitle}`;
     });
 
     return card;
