@@ -1,13 +1,13 @@
-const https = require('https');
-const querystring = require('querystring');
 const express = require('express');
-const fs = require('fs')
 const path = require('path')
+const fs = require('fs');
+const bodyParser = require('body-parser');
 
-const APIKey = require('./assets/config/APIKey');
 const app = express();
 const PORT = 8080;
 
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static('assets'));
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
@@ -28,7 +28,7 @@ app.get('/register', (req, res) => {
   });
 });
 
-app.get('/movie/:title', (req, res) => {
+app.get('/movie/:id', (req, res) => {
   res.sendFile(path.join(__dirname,'assets' , 'html', 'movie.html'), (err) => {
     if (err) {
       res.status(500).send(err);
@@ -36,7 +36,7 @@ app.get('/movie/:title', (req, res) => {
   });
 });
 
-app.get('/show/:title', (req, res) => {
+app.get('/show/:id', (req, res) => {
   res.sendFile(path.join(__dirname,'assets' , 'html', 'show.html'), (err) => {
     if (err) {
       res.status(500).send(err);
