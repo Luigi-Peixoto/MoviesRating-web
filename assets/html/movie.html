@@ -9,10 +9,10 @@
     <link rel="stylesheet" href="../css/navbar.css">
     <link rel="stylesheet" href="../css/main.css">
     <link rel="stylesheet" href="../css/footer.css">
-    <link rel="stylesheet" href="../css/container.css">
+    <link rel="stylesheet" href="../css/movie.css">
     <title>Rate - Movie</title>
     <script type="module" src="../script/movie.js"></script>
-    <style>main {height: 75.5vh;}
+    <style>
     .register-text {border-radius: 14px;}
     .register-submit{
         padding: 5px 10px;
@@ -53,7 +53,19 @@
     </nav>
     
     <main>
-        <article id="top-content"></article>
+        <article id="movie-container">
+            <div id="top-content">
+                <img id="movie-img" src="../images/imageError.png" alt="Image Error">
+                <div id="movie-rate"> <p> 0.0 </p> <img id="rate-image" src="../images//estrela.png" alt=""> </div>
+                
+                <div id="movie-content">
+                    <h3 id="movie-title"> Não foi possível carregar o Filme</h3>
+                    <p id="movie-description">Não foi possivel carregar a descrição do filmes</p>
+                </div>
+                
+            </div>
+            <div id="down-content">TESTE </div>
+        </article>
     </main>
 
     <footer>
