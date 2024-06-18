@@ -37,7 +37,7 @@ app.get('/movie/:title', (req, res) => {
 });
 
 app.get('/show/:title', (req, res) => {
-  res.sendFile(path.join(__dirname,'assets' , 'html', 'serie.html'), (err) => {
+  res.sendFile(path.join(__dirname,'assets' , 'html', 'show.html'), (err) => {
     if (err) {
       res.status(500).send(err);
     }

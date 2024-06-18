@@ -13,7 +13,11 @@ document.addEventListener('DOMContentLoaded', () => {
   }).toString();
     
   const url = `https://api.themoviedb.org/3/search/movie?${queryParams}`;
-  console.log(url);
+
+  const movieTitle = document.getElementById("movie-title")
+  const movieImg = document.getElementById("movie-img")
+  const movieDesc = document.getElementById("movie-description")
+  const movieRate = document.getElementById("movie-rate")
     
   const xhr = new XMLHttpRequest();
   xhr.open('GET', url, true);
@@ -24,7 +28,12 @@ document.addEventListener('DOMContentLoaded', () => {
         const movieData = JSON.parse(xhr.responseText);
         const movie = movieData.results && movieData.results.length > 0 ? movieData.results[0] : null;
         if (movie) {
-          console.log(movie.title, movie.release_date, movie.overview);
+          movieTitle.textContent = movie.title;
+          movieImg.src = `https://image.tmdb.org/t/p/w500/${movie.poster_path}`;
+          movieImg.alt = "";
+          movieDesc.textContent = movie.overview;
+          movieRate.textContent = movie.vote_average.toFixed(1).toString();
+          
         } else {
           console.log('Filme não encontrado', xhr.status);
         }
