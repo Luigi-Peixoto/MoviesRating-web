@@ -12,20 +12,15 @@ app.use(express.static('assets'));
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 
+app.set('views', path.join(__dirname,'assets' , 'html'));
+app.set('view engine', 'ejs');
+
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname,'assets' , 'html', 'index.html'), (err) => {
-    if (err) {
-      res.status(500).send(err);
-    }
-  });
+  res.render('index');
 });
 
 app.get('/register', (req, res) => {
-  res.sendFile(path.join(__dirname,'assets' , 'html', 'register.html'), (err) => {
-    if (err) {
-      res.status(500).send(err);
-    }
-  });
+  res.render('register');
 });
 
 app.post('/register', (req, res) => {
@@ -132,19 +127,11 @@ app.post('/login', (req, res) => {
 
 
 app.get('/movie/:id', (req, res) => {
-  res.sendFile(path.join(__dirname,'assets' , 'html', 'movie.html'), (err) => {
-    if (err) {
-      res.status(500).send(err);
-    }
-  });
+  res.render('movie');
 });
 
 app.get('/show/:id', (req, res) => {
-  res.sendFile(path.join(__dirname,'assets' , 'html', 'show.html'), (err) => {
-    if (err) {
-      res.status(500).send(err);
-    }
-  });
+  res.render('show');
 });
 
 app.listen(PORT, () => {

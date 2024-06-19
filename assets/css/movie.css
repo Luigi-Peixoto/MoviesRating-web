@@ -62,3 +62,8 @@
     height: 40%;
 }
 
+#movie-title {
+    font-size: 300%;
+    text-transform: uppercase;
+    font-weight: bold;
+}

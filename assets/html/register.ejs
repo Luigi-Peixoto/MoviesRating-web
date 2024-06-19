@@ -26,26 +26,7 @@
     </style>
 </head>
 <body>
-    <header>
-        <img src="../images/Logo.png" alt="Logo" id="logo">
-        <div id="search-content" style="visibility:hidden;">
-            <form id="searchbar">
-                <span class="searchbar-icon material-symbols-outlined">Search</span>
-                <input type="search" class="searchbar-text" placeholder="Pesquisar filme ou série...">
-            </form>
-            <div id="searchResults"></div>
-        </div>
-        
-        <span id="authentication">
-            
-            <div id="login-dropdown">
-                <iframe src="../html/login.html" title="Rate - Login Page" style="height: 120px;"></iframe>
-            </div>
-            
-            <button id="login-dropdown-button" class="buttonAuthentication">Login</button>
-            <a href="/register" class="buttonAuthentication special">Register</a>
-        </span>
-    </header>
+    <%- include('header') %>
     
     <nav>
         <ul id="navbar-list">
@@ -78,9 +59,7 @@
         </form>
     </main>
 
-    <footer>
-        <p>Por Elson Freire e Luigi Soares - &#169 Todos os direitos reservados</p>
-    </footer>
+    <%- include('footer') %>
 </body>
 
 </html>
