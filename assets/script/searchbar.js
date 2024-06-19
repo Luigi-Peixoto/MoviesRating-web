@@ -40,6 +40,11 @@ function displayMovie(movies) {
 
     movies.forEach(movie => {
         const movieDiv = document.createElement('div');
+        
+        movieDiv.addEventListener("click", function() {
+            window.location.href = `/movie/${movie.id}`;
+        });
+
         movieDiv.classList.add('search-result');
 
         const img = document.createElement('img');
