@@ -127,11 +127,11 @@ app.post('/login', (req, res) => {
 
 
 app.get('/movie/:id', (req, res) => {
-  res.render('movie');
+  res.render('movie-page');
 });
 
 app.get('/show/:id', (req, res) => {
-  res.render('show');
+  res.render('show-page');
 });
 
 app.listen(PORT, () => {
