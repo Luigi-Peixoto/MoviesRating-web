@@ -1,23 +1,23 @@
-const https = require('https');
-const querystring = require('querystring');
 const express = require('express');
-const fs = require('fs')
 const path = require('path')
+const fs = require('fs');
+const bodyParser = require('body-parser');
 
-const APIKey = require('./assets/config/APIKey');
 const app = express();
 const PORT = 8080;
 
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static('assets'));
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname,'assets' , 'html', 'index.html'), (err) => {
-      if (err) {
-        res.status(500).send(err);
-      }
-    });
+  res.sendFile(path.join(__dirname,'assets' , 'html', 'index.html'), (err) => {
+    if (err) {
+      res.status(500).send(err);
+    }
+  });
 });
 
 app.get('/register', (req, res) => {
@@ -28,65 +28,123 @@ app.get('/register', (req, res) => {
   });
 });
 
-app.get('/movie/:title', async (req, res) => {
-  const title = req.params.title;
-  
-  const queryParams = querystring.stringify({
-    api_key: APIKey,
-    query: title,
-    language: 'pt-BR'
+app.post('/register', (req, res) => {
+  const newData = req.body;
+
+  const filePath = path.join(__dirname, 'assets', 'data', 'data.json');
+
+  // Ler o conteúdo atual do arquivo data.json
+  fs.readFile(filePath, 'utf8', (err, data) => {
+      if (err) {
+          if (err.code === 'ENOENT') {
+              // Se o arquivo não existir, cria um novo array com os novos dados
+              const dataArray = [newData];
+              fs.writeFile(filePath, JSON.stringify(dataArray, null, 2), (err) => {
+                  if (err) {
+                      console.error('Erro ao salvar os dados em arquivo:', err);
+                      return res.status(500).send('Erro ao salvar os dados em arquivo');
+                  } else {
+                      console.log('Dados salvos em arquivo com sucesso');
+                      return res.status(200).send('Dados salvos em arquivo com sucesso');
+                  }
+              });
+          } else {
+              console.error('Erro ao ler o arquivo:', err);
+              return res.status(500).send('Erro ao ler o arquivo');
+          }
+      } else {
+          let dataArray;
+          try {
+              // Verifica se o conteúdo do arquivo é uma string vazia
+              if (data.trim() === '') {
+                  dataArray = [];
+              } else {
+                  dataArray = JSON.parse(data);
+              }
+          } catch (parseError) {
+              console.error('Erro ao analisar o conteúdo do arquivo:', parseError);
+              return res.status(500).send('Erro ao analisar o conteúdo do arquivo');
+          }
+
+          if (dataArray.some(user => user.username === newData.username) || dataArray.some(user => user.email === newData.email)) {
+              return res.status(400).send('Nome de usuário ou email já existe');
+          }
+
+          // Adicionar os novos dados ao array existente
+          dataArray.push(newData);
+
+          // Gravar o array atualizado de volta no arquivo
+          fs.writeFile(filePath, JSON.stringify(dataArray, null, 2), (err) => {
+              if (err) {
+                  console.error('Erro ao salvar os dados em arquivo:', err);
+                  return res.status(500).send('Erro ao salvar os dados em arquivo');
+              } else {
+                  console.log('Dados salvos em arquivo com sucesso');
+                  return res.status(200).send('Dados salvos em arquivo com sucesso');
+              }
+          });
+      }
   });
-  
-  const url = `https://api.themoviedb.org/3/search/movie?${queryParams}`;
-  
-  try {
-    https.get(url, (response) => {
-      let data = '';
+});
 
-      response.on('data', (chunk) => {
-        data += chunk;
-      });
+app.post('/login', (req, res) => {
+  const newData = req.body;
+  const filePath = path.join(__dirname, 'assets', 'data', 'data.json');
 
-      response.on('end', () => {
-        const movieData = JSON.parse(data);
-        let movieDetailsHtml = '<p>Filme não encontrado.</p>';
-
-        if (movieData.results && movieData.results.length > 0) {
-          const movie = movieData.results[0];
-          movieDetailsHtml = `
-            <h2>${movie.title}</h2>
-            <p>Data de Lançamento: ${movie.release_date}</p>
-            <p>${movie.overview}</p>
-            <img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" alt="${movie.title}">
-          `;
+  fs.readFile(filePath, 'utf8', (err, data) => {
+    if (err) {
+      if (err.code === 'ENOENT') {
+        // Se o arquivo não existir, o usuário não existe
+        return res.status(400).send("O usuário não existe!");
+      } else {
+        // Outros erros de leitura de arquivo
+        console.error('Erro ao ler o arquivo:', err);
+        return res.status(500).send('Erro ao ler o arquivo');
+      }
+    } else {
+      let dataArray;
+      try {
+        // Verifica se o conteúdo do arquivo é uma string vazia
+        if (data.trim() === '') {
+          dataArray = [];
+          return res.status(400).send("O usuário não existe!");
+        } else {
+          dataArray = JSON.parse(data);
         }
+      } catch (parseError) {
+        console.error('Erro ao analisar o conteúdo do arquivo:', parseError);
+        return res.status(500).send('Erro ao analisar o conteúdo do arquivo');
+      }
 
-        res.send(`
-          <!DOCTYPE html>
-          <html lang="en">
-          <head>
-            <meta charset="UTF-8">
-            <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <title>${title}</title>
-            <link rel="stylesheet" href="/assets/css/style.css">
-          </head>
-          <body>
-            <h1>${title}</h1>
-            ${movieDetailsHtml}
-          </body>
-          </html>
-        `);
-      });
+      // Verifica a existência de contas com o usuário inserido
+      const user = dataArray.find(user => user.username === newData.username);
+      if (user) {
+        if (user.password === newData.password) {
+          return res.status(200).send('Login efetuado com sucesso!');
+        }
+        return res.status(400).send('Senha Incorreta!');
+      } else {
+        return res.status(400).send("O usuário não existe!");
+      }
+    }
+  });
+});
 
-    }).on('error', (error) => {
-      console.error('Erro ao buscar dados do filme:', error);
-      res.status(500).send('Erro ao buscar dados do filme');
-    });
 
-  } catch (error) {
-    console.error('Erro geral:', error);
-    res.status(500).send('Erro ao buscar dados do filme');
-  }
+app.get('/movie/:id', (req, res) => {
+  res.sendFile(path.join(__dirname,'assets' , 'html', 'movie.html'), (err) => {
+    if (err) {
+      res.status(500).send(err);
+    }
+  });
+});
+
+app.get('/show/:id', (req, res) => {
+  res.sendFile(path.join(__dirname,'assets' , 'html', 'show.html'), (err) => {
+    if (err) {
+      res.status(500).send(err);
+    }
+  });
 });
 
 app.listen(PORT, () => {

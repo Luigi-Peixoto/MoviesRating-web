@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-br">
-
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -10,14 +9,22 @@
     <link rel="stylesheet" href="../css/navbar.css">
     <link rel="stylesheet" href="../css/main.css">
     <link rel="stylesheet" href="../css/footer.css">
-    <link rel="stylesheet" href="../css/container.css">
-    <script type="module" src="../script/index.js"></script>
-    <script type="module" src="../script/login.js"></script>
-    <title>Rate - Movie Rating Website</title>
+    <link rel="stylesheet" href="../css/movie.css">
+    <title>Rate - Show</title>
+    <script type="module" src="../script/show.js"></script>
+    <style>
+    .register-text {border-radius: 14px;}
+    .register-submit{
+        padding: 5px 10px;
+        border-radius: 14px;
+    }
+    .register-submit:hover{
+        cursor: pointer;
+        opacity: 0.9;
+    }
+    </style>
 </head>
-
 <body>
-    
     <header>
         <img src="../images/Logo.png" alt="Logo" id="logo">
         <div id="search-content" style="visibility:hidden;">
@@ -49,51 +56,26 @@
     </nav>
     
     <main>
-        
-        <h1>Não sabe o que assistir?</h1>
-        <h3>Filmes mais bem avaliados pelos membros do site! Você não vai se arrepender..</h3>
-        
-        <article id="top-content"></article>
+        <article id="movie-container">
+            <div id="top-content">
+                <div id="left-content">
+                    <img id="movie-img" class="banner" src="../images/imageError.png" alt="">
+                    <div id="rate">
+                        <p id="movie-rate"> 0.0</p>
+                        <img class="star" src="../images/estrela.png" alt="">
+                    </div>
+                </div>
+                <div id="rigth-content">
+                    <p id="movie-title"> Não foi possível acessar a Série</p>
+                    <p id="movie-description"> Não foi possível acessar a descrição da Série</p>
+                </div>
+            </div>
+            <div id="bottom-content"></div>
+        </article>
     </main>
 
     <footer>
         <p>Por Elson Freire e Luigi Soares - &#169 Todos os direitos reservados</p>
     </footer>
 </body>
-<script>
-document.addEventListener("DOMContentLoaded", function() {
-    const searchInput = document.querySelector('#searchbar-text');
-    const searchResults = document.querySelector('#searchResults');
-    searchInput.addEventListener('keyup', function() {
-    const query = searchInput.value.trim(); // Obter o valor do campo de entrada
-
-    // Enviar a solicitação para o servidor apenas se houver uma consulta válida
-    if (query.length > 0) {
-        const xhr = new XMLHttpRequest();
-        xhr.open('GET', `/search?q=${query}`, true);
-
-        xhr.onload = function() {
-        if (this.status === 200) {
-            const results = JSON.parse(this.responseText);
-
-            // Limpar os resultados anteriores
-            searchResults.innerHTML = '';
-
-            // Exibir os novos resultados
-            results.forEach(function(result) {
-            const div = document.createElement('div');
-            div.innerHTML = `<h2>${result.title}</h2><p>${result.description}</p>`;
-            searchResults.appendChild(div);
-            });
-        }
-        }
-
-        xhr.send();
-    } else {
-        // Se o campo estiver vazio, limpar os resultados
-        searchResults.innerHTML = '';
-    }
-    });
-});
-</script>
 </html>
