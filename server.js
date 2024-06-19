@@ -87,6 +87,50 @@ app.post('/register', (req, res) => {
   });
 });
 
+app.post('/login', (req, res) => {
+  const newData = req.body;
+  const filePath = path.join(__dirname, 'assets', 'data', 'data.json');
+
+  fs.readFile(filePath, 'utf8', (err, data) => {
+    if (err) {
+      if (err.code === 'ENOENT') {
+        // Se o arquivo não existir, o usuário não existe
+        return res.status(400).send("O usuário não existe!");
+      } else {
+        // Outros erros de leitura de arquivo
+        console.error('Erro ao ler o arquivo:', err);
+        return res.status(500).send('Erro ao ler o arquivo');
+      }
+    } else {
+      let dataArray;
+      try {
+        // Verifica se o conteúdo do arquivo é uma string vazia
+        if (data.trim() === '') {
+          dataArray = [];
+          return res.status(400).send("O usuário não existe!");
+        } else {
+          dataArray = JSON.parse(data);
+        }
+      } catch (parseError) {
+        console.error('Erro ao analisar o conteúdo do arquivo:', parseError);
+        return res.status(500).send('Erro ao analisar o conteúdo do arquivo');
+      }
+
+      // Verifica a existência de contas com o usuário inserido
+      const user = dataArray.find(user => user.username === newData.username);
+      if (user) {
+        if (user.password === newData.password) {
+          return res.status(200).send('Login efetuado com sucesso!');
+        }
+        return res.status(400).send('Senha Incorreta!');
+      } else {
+        return res.status(400).send("O usuário não existe!");
+      }
+    }
+  });
+});
+
+
 app.get('/movie/:id', (req, res) => {
   res.sendFile(path.join(__dirname,'assets' , 'html', 'movie.html'), (err) => {
     if (err) {

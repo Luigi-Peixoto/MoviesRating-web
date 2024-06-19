@@ -24,6 +24,5 @@ document.getElementById("register-form").addEventListener("submit", function(eve
             }
         }
     };
-    console.log(JSON.stringify(formData));
     xhr.send(JSON.stringify(formData));
 });
