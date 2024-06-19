@@ -56,19 +56,19 @@
     <main>
         <h1>Crie sua conta!</h1>
         <form id="register-form" name="register-form">
-            Nome completo: <input type="text" id="fullname" class="register-text"><br><br>
+            Nome completo: <input type="text" id="fullname" class="register-text" required><br><br>
 
-            Nome de usuário (use apenas letras, números e _): <input type="text" id="username" class="register-text"><br><br>
+            Nome de usuário (use apenas letras, números e _): <input type="text" id="username" class="register-text" required><br><br>
 
-            E-mail: <input type="text" id="email" class="register-text"><br><br>
+            E-mail: <input type="text" id="email" class="register-text" required><br><br>
 
-            Senha: <input type="password" id="password" class="register-text"><br><br>
+            Senha: <input type="password" id="password" class="register-text" required><br><br>
 
             Gênero: <br>
-            <input type="radio" id="gender-male" name="gender">
+            <input type="radio" id="gender-male" name="gender" value="male" required>
             <label for="gender-male">Masculino</label><br>
-            <input type="radio" id="gender-female" name="gender">
-            <label for="gender-male">Feminino</label><br><br>
+            <input type="radio" id="gender-female" name="gender" value="female" required>
+            <label for="gender-female">Feminino</label><br><br>
 
             <input type="submit" class="register-submit"style="color: black;">
 

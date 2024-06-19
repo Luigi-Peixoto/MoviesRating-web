@@ -28,6 +28,65 @@ app.get('/register', (req, res) => {
   });
 });
 
+app.post('/register', (req, res) => {
+  const newData = req.body;
+
+  const filePath = path.join(__dirname, 'assets', 'data', 'data.json');
+
+  // Ler o conteúdo atual do arquivo data.json
+  fs.readFile(filePath, 'utf8', (err, data) => {
+      if (err) {
+          if (err.code === 'ENOENT') {
+              // Se o arquivo não existir, cria um novo array com os novos dados
+              const dataArray = [newData];
+              fs.writeFile(filePath, JSON.stringify(dataArray, null, 2), (err) => {
+                  if (err) {
+                      console.error('Erro ao salvar os dados em arquivo:', err);
+                      return res.status(500).send('Erro ao salvar os dados em arquivo');
+                  } else {
+                      console.log('Dados salvos em arquivo com sucesso');
+                      return res.status(200).send('Dados salvos em arquivo com sucesso');
+                  }
+              });
+          } else {
+              console.error('Erro ao ler o arquivo:', err);
+              return res.status(500).send('Erro ao ler o arquivo');
+          }
+      } else {
+          let dataArray;
+          try {
+              // Verifica se o conteúdo do arquivo é uma string vazia
+              if (data.trim() === '') {
+                  dataArray = [];
+              } else {
+                  dataArray = JSON.parse(data);
+              }
+          } catch (parseError) {
+              console.error('Erro ao analisar o conteúdo do arquivo:', parseError);
+              return res.status(500).send('Erro ao analisar o conteúdo do arquivo');
+          }
+
+          if (dataArray.some(user => user.username === newData.username) || dataArray.some(user => user.email === newData.email)) {
+              return res.status(400).send('Nome de usuário ou email já existe');
+          }
+
+          // Adicionar os novos dados ao array existente
+          dataArray.push(newData);
+
+          // Gravar o array atualizado de volta no arquivo
+          fs.writeFile(filePath, JSON.stringify(dataArray, null, 2), (err) => {
+              if (err) {
+                  console.error('Erro ao salvar os dados em arquivo:', err);
+                  return res.status(500).send('Erro ao salvar os dados em arquivo');
+              } else {
+                  console.log('Dados salvos em arquivo com sucesso');
+                  return res.status(200).send('Dados salvos em arquivo com sucesso');
+              }
+          });
+      }
+  });
+});
+
 app.get('/movie/:id', (req, res) => {
   res.sendFile(path.join(__dirname,'assets' , 'html', 'movie.html'), (err) => {
     if (err) {
