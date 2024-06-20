@@ -27,9 +27,37 @@
 </header>
 <nav>
     <ul id="navbar-list">
-        <li class="navbar-item"><a href="/">Início</a></li>
-        <li class="navbar-item"><a href="/movies">Filmes</a></li>
-        <li class="navbar-item"><a href="/shows">Séries</a></li>
-        <li class="navbar-item"><a href="/rate">Avaliar</a></li>
+        <li id="nav-inicio" class="navbar-item"><a href="/">Início</a></li>
+        <li id="nav-movies" class="navbar-item"><a href="/movies">Filmes</a></li>
+        <li id="nav-shows" class="navbar-item"><a href="/shows">Séries</a></li>
+        <li id="nav-rate" class="navbar-item"><a href="/rate">Avaliar</a></li>
     </ul>
 </nav>
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const pathname = window.location.pathname;
+        const inicioNav = document.getElementById("nav-inicio");
+        const moviesNav = document.getElementById("nav-movies");
+        const showsNav = document.getElementById("nav-shows");
+        const rateNav = document.getElementById("nav-rate");
+
+        function getNavIdFromPath(path) {
+            if (path === "/") {
+                return "nav-inicio";
+            } else if (path.startsWith("/movies")) {
+                return "nav-movies";
+            } else if (path.startsWith("/shows")) {
+                return "nav-shows";
+            } else if (path.startsWith("/rate")) {
+                return "nav-rate";
+            } else {
+                return "nav-inicio";
+            }
+        }
+
+        const navId = getNavIdFromPath(pathname);
+        const selectedNav = document.getElementById(navId);
+        selectedNav.classList.add("selected-nav");
+
+    });
+</script>
