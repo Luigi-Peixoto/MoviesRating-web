@@ -12,7 +12,7 @@ function fetchMovies(url, sectionTitle, type) {
               id: movie.id,
               title: movie.title || movie.name,
               rating: movie.vote_average,
-              image: `https://image.tmdb.org/t/p/w500/${movie.poster_path}`,
+              image: `${imagePath}/${movie.poster_path}`,
               description: movie.overview
           }));
           appendSection(sectionTitle, movies, type);
@@ -50,6 +50,7 @@ function appendSection(title, items, type) {
     section.appendChild(container);
     topContent.appendChild(section);
 }
+
 function createCard(id, title, rating, image, description) {
     const card = document.createElement("div");
     card.className = "card";
