@@ -125,13 +125,20 @@ app.post('/login', (req, res) => {
   });
 });
 
-
 app.get('/movie/:id', (req, res) => {
-  res.render('movie');
+  res.render('movie-page');
 });
 
 app.get('/show/:id', (req, res) => {
-  res.render('show');
+  res.render('show-page');
+});
+
+app.get('/movies', (req, res) => {
+  res.render('catalogue');
+});
+
+app.get('/shows', (req, res) => {
+  res.render('catalogue');
 });
 
 app.listen(PORT, () => {
