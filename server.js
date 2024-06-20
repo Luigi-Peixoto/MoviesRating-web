@@ -134,11 +134,11 @@ app.get('/show/:id', (req, res) => {
 });
 
 app.get('/movies', (req, res) => {
-  res.render('movies');
+  res.render('catalogue');
 });
 
 app.get('/shows', (req, res) => {
-  res.render('shows');
+  res.render('catalogue');
 });
 
 app.listen(PORT, () => {
