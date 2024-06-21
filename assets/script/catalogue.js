@@ -72,8 +72,12 @@ function initPageButtons() {
             window.location.href = `/movies/${pageNumber - 1}`;
         });
     }
-
-    nextPageButton.addEventListener("click", () => {
-        window.location.href = `/movies/${pageNumber + 1}`;
-    });
+    
+    if(pageNumber === 500) {
+        nextPageButton.style.color = "transparent";
+    } else {
+        nextPageButton.addEventListener("click", () => {
+            window.location.href = `/movies/${pageNumber + 1}`;
+        });
+    }
 }
