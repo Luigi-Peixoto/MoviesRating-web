@@ -3,7 +3,7 @@ import APIKey from '../config/key.js';
 document.addEventListener('DOMContentLoaded', () => {
   const path = window.location.pathname;
   const movieId = path.split('/').pop();
-    
+  
   const url = `https://api.themoviedb.org/3/movie/${movieId}?api_key=${APIKey}&language=pt-BR`;
   
   createMovieContent(url)
@@ -51,7 +51,7 @@ function  createMovieContent(url){
   
 function loadComments(movieId) {
   var xhr = new XMLHttpRequest();
-  var url = '../data/comments.json'; 
+  var url = '../data/moviesComments.json'; 
 
   xhr.onreadystatechange = function() {
     if (xhr.readyState === XMLHttpRequest.DONE) {
