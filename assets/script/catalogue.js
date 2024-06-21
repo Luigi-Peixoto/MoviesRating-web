@@ -66,13 +66,13 @@ function initPageButtons() {
     let pageNumber = Number(window.location.href.split("/")[4]);
 
     if(pageNumber === 1) {
-        lastPageButton.style.visibility = "hidden";
+        lastPageButton.style.color = "transparent";
+    } else {
+        lastPageButton.addEventListener("click", () => {
+            window.location.href = `/movies/${pageNumber - 1}`;
+        });
     }
-    
-    lastPageButton.addEventListener("click", () => {
-        window.location.href = `/movies/${pageNumber - 1}`;
-    });
-    
+
     nextPageButton.addEventListener("click", () => {
         window.location.href = `/movies/${pageNumber + 1}`;
     });
