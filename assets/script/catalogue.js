@@ -4,6 +4,7 @@ const path = window.location.pathname;
 const moviesPage = path.split('/').pop();
 
 const moviesApiUrl = `https://api.themoviedb.org/3/movie/popular?api_key=${APIKey}&language=pt-BR&page=${moviesPage}`;
+const showsApiUrl = `https://api.themoviedb.org/3/tv/popular?api_key=${APIKey}&language=en-US&page=1`
 const imagePath = 'https://image.tmdb.org/t/p/w500';
 
 initPageButtons();
@@ -14,9 +15,11 @@ async function createContainer() {
     const container = document.createElement("div");
     container.setAttribute("id", "card-container");
     
-    const movies = await fetchMovies();
-    movies.forEach(movie => {
-        container.appendChild(createCard(movie));
+    let catalogueType =  window.location.href.split("/")[3];
+
+    const contentResults = await fetchMovies(catalogueType);
+    contentResults.forEach(content => {
+        container.appendChild(createCard(content));
     });
 
     const main = document.querySelector("main");
@@ -24,15 +27,15 @@ async function createContainer() {
 }
 
 //retorna card do filme
-function createCard(movie) {
+function createCard(content) {
     const card = document.createElement("div");
     card.classList.add("card");
     const image = document.createElement("img");
     image.classList.add("movie-img");
-    image.src = movie.image;
+    image.src = content.image;
 
     card.addEventListener("click", function() {
-        window.location.href = `/movie/${movie.id}`;
+        window.location.href = `/movie/${content.id}`;
     });
 
     card.appendChild(image);
@@ -41,16 +44,24 @@ function createCard(movie) {
 }
 
 //retorna filmes
-function fetchMovies() {
-    return fetch(moviesApiUrl)
+function fetchMovies(catalogueType) {
+    let apiUrl = "";
+    
+    if(catalogueType == "movies") {
+        apiUrl = moviesApiUrl;
+    } else if(catalogueType == "shows") {
+        apiUrl = showsApiUrl;
+    }
+    
+    return fetch(apiUrl)
         .then(response => response.json())
         .then(data => {
-            return data.results.map(movie => ({
-                id: movie.id,
-                title: movie.title || movie.name,
-                rating: movie.vote_average,
-                image: `${imagePath}/${movie.poster_path}`,
-                description: movie.overview
+            return data.results.map(content => ({
+                id: content.id,
+                title: content.title || content.name,
+                rating: content.vote_average,
+                image: `${imagePath}/${content.poster_path}`,
+                description: content.overview
             }));
         })
         .catch(error => {
@@ -72,8 +83,12 @@ function initPageButtons() {
             window.location.href = `/movies/${pageNumber - 1}`;
         });
     }
-
-    nextPageButton.addEventListener("click", () => {
-        window.location.href = `/movies/${pageNumber + 1}`;
-    });
+    
+    if(pageNumber === 500) {
+        nextPageButton.style.color = "transparent";
+    } else {
+        nextPageButton.addEventListener("click", () => {
+            window.location.href = `/movies/${pageNumber + 1}`;
+        });
+    }
 }

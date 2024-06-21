@@ -33,7 +33,7 @@
 
 .banner {
     width: 60%;
-    height: 90%;
+    height: auto;
     display: block;
     object-fit: cover;
 }

@@ -155,8 +155,12 @@ app.get('/movies/:page', (req, res) => {
   res.render('catalogue');
 });
 
-app.get('/shows', (req, res) => {
+app.get('/shows/:page', (req, res) => {
   res.render('catalogue');
+});
+
+app.get('/rate', (req, res) => {
+  res.render('rate');
 });
 
 app.listen(PORT, () => {
