@@ -2,7 +2,7 @@
 <link rel="stylesheet" href="../css/header.css">
 <link rel="stylesheet" href="../css/navbar.css">
 <link rel="stylesheet" href="../css/searchbar.css">
-
+<script type="module" src="../script/login.js"></script>
 
 <header>
     <img src="../images/Logo.png" alt="Logo" id="logo">
@@ -22,7 +22,11 @@
         </div>
         
         <button id="login-dropdown-button" class="buttonAuthentication">Login</button>
-        <a href="/register" class="buttonAuthentication special">Register</a>
+        <a id="register-button" href="/register" class="buttonAuthentication">Register</a>
+        <div id="user-header" style="display: none;">
+            <p id="username-header"></p>
+            <button id="logout-button" class="buttonAuthentication">Logout</button> 
+        </div>
     </span>
 </header>
 <nav>

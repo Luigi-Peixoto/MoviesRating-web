@@ -124,8 +124,8 @@
     font-family: "Archivo Black", sans-serif;
     color: black;
     font-size: 20px;
-    font-weight: bold; /* Autor em negrito */
-    text-align: center; /* Centraliza o texto */
+    font-weight: bold;
+    text-align: center;
 }
 
 .comment-text {

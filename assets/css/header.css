@@ -55,23 +55,21 @@ header a {
 .buttonAuthentication {
     border-radius: 30px;
     color: white;
+    background: none;
+    border: none;
+    font-size: 17px;
+    font-family: Okta Neue;
 }
 
-.special {
+#register-button {
     padding: 10px 10%;
     background-color: lightgray;
     color:black;
     margin-left: 10px;
 }
-.special:hover {
+.buttonAuthentication:hover{
     opacity: 0.9;
-}
-
-#login-dropdown-button {
-    background: none;
-    border: none;
-    font-size: 17px;
-    font-family: Okta Neue;
+    cursor: pointer;
 }
 
 #login-dropdown {
