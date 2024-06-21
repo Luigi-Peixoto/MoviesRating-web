@@ -1,4 +1,5 @@
 const express = require('express');
+const cookieParser = require('cookie-parser');
 const path = require('path')
 const fs = require('fs');
 const bodyParser = require('body-parser');
@@ -11,6 +12,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static('assets'));
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
+app.use(cookieParser());
 
 app.set('views', path.join(__dirname,'assets' , 'html'));
 app.set('view engine', 'ejs');
@@ -67,7 +69,8 @@ app.post('/register', (req, res) => {
 
           // Adicionar os novos dados ao array existente
           dataArray.push(newData);
-
+          res.cookie('username', newData.username, { maxAge: 30 * 24 * 60 * 60 * 1000 });
+          
           // Gravar o array atualizado de volta no arquivo
           fs.writeFile(filePath, JSON.stringify(dataArray, null, 2), (err) => {
               if (err) {
@@ -115,6 +118,7 @@ app.post('/login', (req, res) => {
       const user = dataArray.find(user => user.username === newData.username);
       if (user) {
         if (user.password === newData.password) {
+          res.cookie('username', user.username, { maxAge: 30 * 24 * 60 * 60 * 1000 });
           return res.status(200).send('Login efetuado com sucesso!');
         }
         return res.status(400).send('Senha Incorreta!');
@@ -123,6 +127,20 @@ app.post('/login', (req, res) => {
       }
     }
   });
+});
+
+app.get('/check-login', (req, res) => {
+  const username = req.cookies.username;
+  if (username) {
+      return res.status(200).send(`Usuário ${username} está logado.`);
+  } else {
+      return res.status(401).send('Usuário não está logado.');
+  }
+});
+
+app.post('/logout', (req, res) => {
+  res.clearCookie('username');
+  res.status(200).send('Logout efetuado com sucesso!');
 });
 
 app.get('/movie/:id', (req, res) => {

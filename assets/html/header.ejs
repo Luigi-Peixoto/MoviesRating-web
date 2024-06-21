@@ -2,7 +2,7 @@
 <link rel="stylesheet" href="../css/header.css">
 <link rel="stylesheet" href="../css/navbar.css">
 <link rel="stylesheet" href="../css/searchbar.css">
-
+<script type="module" src="../script/login.js"></script>
 
 <header>
     <img src="../images/Logo.png" alt="Logo" id="logo">
@@ -22,7 +22,11 @@
         </div>
         
         <button id="login-dropdown-button" class="buttonAuthentication">Login</button>
-        <a href="/register" class="buttonAuthentication special">Register</a>
+        <a id="register-button" href="/register" class="buttonAuthentication">Register</a>
+        <div id="user-header" style="display: none;">
+            <p id="username-header"></p>
+            <button id="logout-button" class="buttonAuthentication">Logout</button> 
+        </div>
     </span>
 </header>
 <nav>
@@ -30,7 +34,6 @@
         <li id="nav-inicio" class="navbar-item"><a href="/">Início</a></li>
         <li id="nav-movies" class="navbar-item"><a href="/movies/1">Filmes</a></li>
         <li id="nav-shows" class="navbar-item"><a href="/shows/1">Séries</a></li>
-        <li id="nav-rate" class="navbar-item"><a href="/rate">Avaliar</a></li>
     </ul>
 </nav>
 <script>
@@ -48,16 +51,15 @@
                 return "nav-movies";
             } else if (path.startsWith("/shows")) {
                 return "nav-shows";
-            } else if (path.startsWith("/rate")) {
-                return "nav-rate";
             } else {
-                return "nav-inicio";
+                return null;
             }
         }
 
         const navId = getNavIdFromPath(pathname);
-        const selectedNav = document.getElementById(navId);
-        selectedNav.classList.add("selected-nav");
-
+        if (navId){
+            const selectedNav = document.getElementById(navId);
+            selectedNav.classList.add("selected-nav");
+        }
     });
 </script>

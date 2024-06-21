@@ -1,0 +1,43 @@
+{
+    "comments": {
+      "1022789": [
+          {
+            "username": "VitorPinto",
+            "text": "Gostei muito desse filme. Me identifiquei bastante com os novos personagems!",
+            "type": "like"
+          },
+          {
+            "username": "Giovanni1337",
+            "text": "A ideia do filme foi boa, mas a execução deixou a desejar! Achei muito exagerado a parte da ansiedade. Não gostei!",
+            "type": "dislike"
+          },
+          {
+            "username": "renata",
+            "text": "Assisti o Filme ontem e simplesmente adorei!",
+            "type": "like"
+          },
+          {
+            "username": "ciclano",
+            "text": "Outro comentário aqui",
+            "type": "dislike"
+          },
+          {
+            "username": "luigi",
+            "text": "Outro comentário aqui",
+            "type": "dislike"
+          },
+          {
+            "username": "elsoka",
+            "text": "Outro comentário aqui",
+            "type": "dislike"
+          }
+        ],
+      "653346":  [
+          {
+              "username": "luigi",
+              "text": "Outro comentário aqui",
+              "type": "dislike"
+          }
+        ]
+    }
+  }
