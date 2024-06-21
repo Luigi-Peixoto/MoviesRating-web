@@ -1,0 +1,19 @@
+.banner {
+
+}
+
+input,
+textarea {
+    color: black;
+}
+
+.rating-description {
+    width: 50%;
+    min-height: 200px;
+}
+
+.checked-star {
+    color: orange;
+    width: 30px;
+    height: 30px;
+}
