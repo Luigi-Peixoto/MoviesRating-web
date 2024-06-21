@@ -1,20 +1,18 @@
 import APIKey from '../config/key.js';
 
-const moviesApiUrl = `https://api.themoviedb.org/3/movie/popular?api_key=${APIKey}&language=pt-BR`;
+const path = window.location.pathname;
+const moviesPage = path.split('/').pop();
+
+const moviesApiUrl = `https://api.themoviedb.org/3/movie/popular?api_key=${APIKey}&language=pt-BR&page=${moviesPage}`;
 const imagePath = 'https://image.tmdb.org/t/p/w500';
-let containerNumber = 0;
 
-for(let i = 0; i < 6; i++) {
-    createContainer(containerNumber);
-    containerNumber++;
-}
+createContainer();
 
-async function createContainer(containerNumber) {
+async function createContainer() {
     const container = document.createElement("div");
-    container.classList.add("container");
-    container.setAttribute("id", "container" + containerNumber);
+    container.setAttribute("id", "card-container");
     
-    const movies = await fetchMovies(containerNumber);
+    const movies = await fetchMovies();
     movies.forEach(movie => {
         container.appendChild(createCard(movie));
     });
@@ -31,17 +29,21 @@ function createCard(movie) {
     image.classList.add("movie-img");
     image.src = movie.image;
 
+    card.addEventListener("click", function() {
+        window.location.href = `/movie/${movie.id}`;
+    });
+
     card.appendChild(image);
 
     return card;
 }
 
 //retorna filmes
-function fetchMovies(containerNumber) {
+function fetchMovies() {
     return fetch(moviesApiUrl)
         .then(response => response.json())
         .then(data => {
-            return data.results.slice(containerNumber*6, (containerNumber + 1)*6).map(movie => ({
+            return data.results.map(movie => ({
                 id: movie.id,
                 title: movie.title || movie.name,
                 rating: movie.vote_average,

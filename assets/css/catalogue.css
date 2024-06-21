@@ -1,9 +1,13 @@
-.container {
+#card-container {
     display: flex;
-    width: 50%;
-
+    flex-wrap: wrap;
 }
 
 .card {
-    
+    width: 15%;
+    margin: 2%;
+}
+
+.movie-img {
+    width: 100%;
 }

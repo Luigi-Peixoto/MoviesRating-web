@@ -133,7 +133,7 @@ app.get('/show/:id', (req, res) => {
   res.render('show-page');
 });
 
-app.get('/movies', (req, res) => {
+app.get('/movies/:page', (req, res) => {
   res.render('catalogue');
 });
 
