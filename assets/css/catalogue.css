@@ -11,3 +11,16 @@
 .movie-img {
     width: 100%;
 }
+
+.page-button {
+    text-align: center;
+    background-color: brown;
+    border-style: none;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.page-button:hover, 
+.page-button:focus {
+    background-color: #c4463d;
+}

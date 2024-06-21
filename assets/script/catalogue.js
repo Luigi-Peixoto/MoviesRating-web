@@ -6,6 +6,8 @@ const moviesPage = path.split('/').pop();
 const moviesApiUrl = `https://api.themoviedb.org/3/movie/popular?api_key=${APIKey}&language=pt-BR&page=${moviesPage}`;
 const imagePath = 'https://image.tmdb.org/t/p/w500';
 
+initPageButtons();
+
 createContainer();
 
 async function createContainer() {
@@ -55,4 +57,23 @@ function fetchMovies() {
             console.error(`Ocorreu um erro`);
             return [];
         });
+}
+
+function initPageButtons() {
+    let lastPageButton = document.getElementById("last-page");
+    let nextPageButton = document.getElementById("next-page");
+    
+    let pageNumber = Number(window.location.href.split("/")[4]);
+
+    if(pageNumber === 1) {
+        lastPageButton.style.visibility = "hidden";
+    }
+    
+    lastPageButton.addEventListener("click", () => {
+        window.location.href = `/movies/${pageNumber - 1}`;
+    });
+    
+    nextPageButton.addEventListener("click", () => {
+        window.location.href = `/movies/${pageNumber + 1}`;
+    });
 }
