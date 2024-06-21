@@ -43,7 +43,6 @@ img {
   max-width: 50%;
   overflow: hidden;
   transition: var(--transition-timing);
-  z-index: 10;
 }
 .card:hover > .card-content{
   height: 100%;
