@@ -44,7 +44,12 @@ a:hover::after {
 .navbar-item:hover {
     color: white;
 }
-
+.selected-nav {
+    color: white;
+}
+.selected-nav a::after {
+    width: 100%;
+}
 @media screen and (max-width: 800px) {
     .navbar-item {
         float: none;
