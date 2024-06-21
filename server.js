@@ -141,6 +141,10 @@ app.get('/shows/:page', (req, res) => {
   res.render('catalogue');
 });
 
+app.get('/rate', (req, res) => {
+  res.render('rate');
+});
+
 app.listen(PORT, () => {
   console.log(`Servidor rodando em http://localhost:${PORT}/`);
 });
