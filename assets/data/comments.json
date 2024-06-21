@@ -1,0 +1,43 @@
+{
+    "comments": {
+      "1022789": [
+          {
+            "username": "fulano123",
+            "text": "Este é um comentário de exemplo",
+            "type": "like"
+          },
+          {
+            "username": "ciclano456",
+            "text": "Outro comentário aqui",
+            "type": "dislike"
+          },
+          {
+            "username": "ciclano45",
+            "text": "Outro comentário aqui",
+            "type": "like"
+          },
+          {
+            "username": "ciclano",
+            "text": "Outro comentário aqui",
+            "type": "dislike"
+          },
+          {
+            "username": "luigi",
+            "text": "Outro comentário aqui",
+            "type": "dislike"
+          },
+          {
+            "username": "elsoka",
+            "text": "Outro comentário aqui",
+            "type": "dislike"
+          }
+        ],
+      "653346":  [
+            {
+                "username": "luigi",
+                "text": "Outro comentário aqui",
+                "type": "dislike"
+            }
+        ]
+    }
+  }

@@ -57,12 +57,77 @@
     width: 100%;
     height: 100%;
 }
-#bottom-content {
-    width: 100%;
-    height: 40%;
-}
+
 #movie-title {
     font-size: 300%;
     text-transform: uppercase;
     font-weight: bold;
+}
+
+#bottom-content {
+    width: 100%;
+    height: 400px;
+    display: flex;
+    flex-direction: column; /* Mantém os cards em linha */
+    justify-content: center; /* Alinha os cards no início */
+    align-items: center;
+}
+
+#comment-content {
+    width: 100%;
+    height: 80%;
+    display: flex;
+    flex-direction: row; /* Mantém os cards em linha */
+    justify-content: left; /* Alinha os cards no início */
+    padding: 10px; /* Adiciona espaçamento interno */
+    overflow-x: auto; /* Adiciona rolagem horizontal se necessário */
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+    cursor: grab;
+}
+#comment-content::-webkit-scrollbar {
+    display: none;  /* Chrome, Safari, Opera */
+}
+.comment-card {
+    background-color: #eee;
+    border-radius: 8px; 
+    padding: 10px; 
+    margin: 10px;
+    flex: 0 0 auto; /* Impede que os cards encolham e permite a rolagem horizontal */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    box-shadow: 0px 0px 10px 1px #000000ee;
+    height: 70%;
+    width: 400px;
+}
+
+.comment-top {
+    height: 20%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.comment-img {
+    margin: 5px;
+    width: 20px;
+    height: 20px;
+    display: block;
+    object-fit: cover;
+}
+
+.comment-author {
+    color: black;
+    font-size: 20px;
+    font-weight: bold; /* Autor em negrito */
+    text-align: center; /* Centraliza o texto */
+}
+
+.comment-text {
+    margin: 5px; /* Remove margens padrão */
+    max-width: 100%;
+    height: 90%;
+    color: black;
 }

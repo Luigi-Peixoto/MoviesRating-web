@@ -38,10 +38,48 @@
                     <p id="movie-description"> Não foi possível acessar a descrição da Série</p>
                 </div>
             </div>
-            <div id="bottom-content"></div>
+            <div id="bottom-content">
+                <h1 class="content-title"> Comentários</h1>
+                <div id="comment-content">
+
+                </div>
+            </div>
         </article>
     </main>
 
     <%- include('footer') %>
 </body>
 </html>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    const scrollContainer = document.getElementById('comment-content');
+    let isDown = false;
+    let startX;
+    let scrollLeft;
+
+    scrollContainer.addEventListener('mousedown', (e) => {
+        isDown = true;
+        scrollContainer.classList.add('active');
+        startX = e.pageX - scrollContainer.offsetLeft;
+        scrollLeft = scrollContainer.scrollLeft;
+    });
+
+    scrollContainer.addEventListener('mouseleave', () => {
+        isDown = false;
+        scrollContainer.classList.remove('active');
+    });
+
+    scrollContainer.addEventListener('mouseup', () => {
+        isDown = false;
+        scrollContainer.classList.remove('active');
+    });
+
+    scrollContainer.addEventListener('mousemove', (e) => {
+        if(!isDown) return;
+        e.preventDefault();
+        const x = e.pageX - scrollContainer.offsetLeft;
+        const walk = (x - startX);
+        scrollContainer.scrollLeft = scrollLeft - walk;
+    });
+});
+</script>

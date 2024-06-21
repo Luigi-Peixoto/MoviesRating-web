@@ -30,7 +30,6 @@
         <li id="nav-inicio" class="navbar-item"><a href="/">Início</a></li>
         <li id="nav-movies" class="navbar-item"><a href="/movies/1">Filmes</a></li>
         <li id="nav-shows" class="navbar-item"><a href="/shows/1">Séries</a></li>
-        <li id="nav-rate" class="navbar-item"><a href="/rate">Avaliar</a></li>
     </ul>
 </nav>
 <script>
@@ -48,16 +47,15 @@
                 return "nav-movies";
             } else if (path.startsWith("/shows")) {
                 return "nav-shows";
-            } else if (path.startsWith("/rate")) {
-                return "nav-rate";
             } else {
-                return "nav-inicio";
+                return null;
             }
         }
 
         const navId = getNavIdFromPath(pathname);
-        const selectedNav = document.getElementById(navId);
-        selectedNav.classList.add("selected-nav");
-
+        if (navId){
+            const selectedNav = document.getElementById(navId);
+            selectedNav.classList.add("selected-nav");
+        }
     });
 </script>

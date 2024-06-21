@@ -5,7 +5,7 @@
     position: relative;
 }
 
-#search-content h1, #search-content h2 {
+#search-content h2, #search-content p {
     text-align: center;
     color: black;
 }
