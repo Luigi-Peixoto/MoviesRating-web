@@ -182,7 +182,7 @@ app.post('/show/:id/rate', (req, res) => {
 
 function addRating(req, res, mediaType) {
   const rating = req.body.rating;
-  const description = req.body.ratingDescription;
+  const description = req.body.description;
 
   const filePath = path.join(__dirname, 'assets', 'data', 'comments.json');
   
@@ -201,14 +201,11 @@ function addRating(req, res, mediaType) {
         dataArray = dataArray.shows;
       }
     }
-    
-    console.log(dataArray);
+    console.log(req.body)
 
-    let newRating = { username: "test", text: description, type: rating }
-    dataArray.push(newRating);
+    let newRating = { username: "test", description: description, rating: rating }
+    console.log(newRating)
     
-    console.log(dataArray);
-
   });
 
   res.redirect("/");
