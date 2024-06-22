@@ -159,8 +159,16 @@ app.get('/shows/:page', (req, res) => {
   res.render('catalogue');
 });
 
-app.get('/rate', (req, res) => {
-  res.render('rate');
+app.get('/movie/:id/rate', (req, res) => {
+  const movieId = req.params.page;
+  
+  res.render('rate', { mediaType: "movie", id: movieId});
+});
+
+app.get('/show/:id/rate', (req, res) => {
+  const showId = req.params.page;
+  
+  res.render('rate', { mediaType: "show", id: showId});
 });
 
 app.listen(PORT, () => {
