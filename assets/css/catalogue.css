@@ -6,7 +6,7 @@
 .card {
     width: 15%;
     margin: 2%;
-    transition: all 0.8s cubic-bezier(0.15, 0.83, 0.66, 1);
+    transition: all 0.8s cubic-bezier(0, 0.8, 0.4, 1);
     border-radius: 10px;
     overflow: hidden;
     display: flex;
