@@ -18,7 +18,7 @@
         <h1>Avalie um filme!</h1>
         <article class="movie-form">
             <img id="selected-movie-img" class="banner" src="/images/imageError.png" alt="Image of the selected movie">
-            <form id="register-form" name="register-form" class="form" action="/movie/:id/rate" method="post">
+            <form id="register-form" name="register-form" class="form" action="/<%- mediaType %>/:id/rate" method="post">
                 <h1 id="selected-movie-title"></h1>
     
                 Rating <br>

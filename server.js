@@ -173,13 +173,46 @@ app.get('/show/:id/rate', (req, res) => {
 });
 
 app.post('/movie/:id/rate', (req, res) => {
+  return addRating(req, res, "movie");
+});
+
+app.post('/show/:id/rate', (req, res) => {
+  return addRating(req, res, "show");
+});
+
+function addRating(req, res, mediaType) {
   const rating = req.body.rating;
   const description = req.body.ratingDescription;
 
+  const filePath = path.join(__dirname, 'assets', 'data', 'comments.json');
+  
+  fs.readFile(filePath, "utf8", (err, data) => {
+    if(err && err.code != "ENOENT") {
+      console.error('Erro ao ler o arquivo de comentários:', err);
+      return res.status(500).send('Erro ao salvar os dados em arquivo');
+    }
 
+    let dataArray = [];
+    if(!err) {
+      dataArray = JSON.parse(data)
+      if(mediaType === "movie") {
+        dataArray = dataArray.movies;
+      } else if(mediaType === "show") {
+        dataArray = dataArray.shows;
+      }
+    }
+    
+    console.log(dataArray);
+
+    let newRating = { username: "test", text: description, type: rating }
+    dataArray.push(newRating);
+    
+    console.log(dataArray);
+
+  });
 
   res.redirect("/");
-});
+}
 
 app.listen(PORT, () => {
   console.log(`Servidor rodando em http://localhost:${PORT}/`);
