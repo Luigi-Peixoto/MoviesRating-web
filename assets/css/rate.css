@@ -6,6 +6,7 @@ textarea {
 .rating-description {
     width: 50%;
     min-height: 200px;
+    font-size: 15px;
 }
 
 .star-rating {
@@ -18,11 +19,13 @@ textarea {
 }
 
 .banner {
+    height: fit-content;
     width: 20%;
 }
 
 .movie-form {
     display: flex;
+
 }
 
 .form {

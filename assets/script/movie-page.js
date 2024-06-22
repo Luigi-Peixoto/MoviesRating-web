@@ -115,10 +115,10 @@ function createCommentCards(comments){
     const image = document.createElement('img');
     image.classList.add("comment-img")
     if(comment.type === "like"){
-      image.src = "../images/like.png";
+      image.src = "/images/like.png";
       image.alt = "like";
     }else{
-      image.src = "../images/dislike.png";
+      image.src = "/images/dislike.png";
       image.alt = "dislike";
     }
 
