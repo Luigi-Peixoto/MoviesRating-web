@@ -18,20 +18,21 @@
         <h1>Avalie um filme!</h1>
         <article class="movie-form">
             <img id="selected-movie-img" class="banner" src="/images/imageError.png" alt="Image of the selected movie">
-            <form id="register-form" name="register-form" class="form">
+            <form id="register-form" name="register-form" class="form" action="/movie/:id/rate" method="post">
                 <h1 id="selected-movie-title"></h1>
     
                 Rating <br>
-                <input type="radio" id="like" name="rating">
+                <input type="radio" id="like" name="rating" value="like" required>
                 <label for="like">Gostei</label>
-                <input type="radio" id="dislike" name="rating">
+                <input type="radio" id="dislike" name="rating" value="dislike" required>
                 <label for="dislike">Não gostei</label>
                 <br>
     
                 Descrição:<br> 
-                <textarea id="rating-description" class="rating-description" placeholder="Disserte a respeito da sua avaliação (Opcional)"></textarea><br><br>
+                <textarea id="rating-description" class="rating-description" name="ratingDescription" placeholder="Disserte a respeito da sua avaliação" required></textarea><br><br>
     
-                <input type="submit" class="register-submit"style="color: black;">
+                <input type="submit" class="rate-submit" style="color: black;">
+            </form>
         </article>
     </main>
     <%- include('footer') %>

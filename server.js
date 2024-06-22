@@ -3,6 +3,7 @@ const cookieParser = require('cookie-parser');
 const path = require('path')
 const fs = require('fs');
 const bodyParser = require('body-parser');
+const { log } = require('console');
 
 const app = express();
 const PORT = 8080;
@@ -169,6 +170,15 @@ app.get('/show/:id/rate', (req, res) => {
   const showId = req.params.id;
   
   res.render('rate', { mediaType: "show", id: showId});
+});
+
+app.post('/movie/:id/rate', (req, res) => {
+  const rating = req.body.rating;
+  const description = req.body.ratingDescription;
+
+
+
+  res.redirect("/");
 });
 
 app.listen(PORT, () => {
