@@ -4,10 +4,11 @@ const path = window.location.pathname;
 const moviesPage = path.split('/').pop();
 
 const moviesApiUrl = `https://api.themoviedb.org/3/movie/popular?api_key=${APIKey}&language=pt-BR&page=${moviesPage}`;
-const showsApiUrl = `https://api.themoviedb.org/3/tv/popular?api_key=${APIKey}&language=en-US&page=1`
+const showsApiUrl = `https://api.themoviedb.org/3/tv/popular?api_key=${APIKey}&language=en-US&page=${moviesPage}`
 const imagePath = 'https://image.tmdb.org/t/p/w500';
 
-initPageButtons();
+let type =  window.location.href.split("/")[3];
+initPageButtons(type);
 
 createContainer();
 
@@ -19,7 +20,7 @@ async function createContainer() {
 
     const contentResults = await fetchMovies(catalogueType);
     contentResults.forEach(content => {
-        container.appendChild(createCard(content));
+        container.appendChild(createCard(content, catalogueType));
     });
 
     const main = document.querySelector("main");
@@ -27,23 +28,31 @@ async function createContainer() {
 }
 
 //retorna card do filme
-function createCard(content) {
+function createCard(content, catalogueType) {
     const card = document.createElement("div");
     card.classList.add("card");
     const image = document.createElement("img");
     image.classList.add("movie-img");
     image.src = content.image;
-
+    
     card.addEventListener("click", function() {
-        window.location.href = `/movie/${content.id}`;
+        if(catalogueType == "movies"){
+            window.location.href = `/movie/${content.id}`;
+        }else if (catalogueType == "shows"){
+            window.location.href = `/show/${content.id}`;
+        }
     });
 
     card.appendChild(image);
 
+    const title = document.createElement('p');
+    title.classList.add("card-title")
+    title.textContent = content.title || content.name;
+
+    card.appendChild(title);
     return card;
 }
 
-//retorna filmes
 function fetchMovies(catalogueType) {
     let apiUrl = "";
     
@@ -70,7 +79,7 @@ function fetchMovies(catalogueType) {
         });
 }
 
-function initPageButtons() {
+function initPageButtons(catalogueType) {
     let lastPageButton = document.getElementById("last-page");
     let nextPageButton = document.getElementById("next-page");
     
@@ -80,7 +89,11 @@ function initPageButtons() {
         lastPageButton.style.color = "transparent";
     } else {
         lastPageButton.addEventListener("click", () => {
-            window.location.href = `/movies/${pageNumber - 1}`;
+            if(catalogueType === "movies"){
+                window.location.href = `/movies/${pageNumber - 1}`;
+            }else if (catalogueType === "shows"){
+                window.location.href = `/shows/${pageNumber - 1}`;
+            }
         });
     }
     
@@ -88,7 +101,11 @@ function initPageButtons() {
         nextPageButton.style.color = "transparent";
     } else {
         nextPageButton.addEventListener("click", () => {
-            window.location.href = `/movies/${pageNumber + 1}`;
+            if(catalogueType === "movies"){
+                window.location.href = `/movies/${pageNumber + 1}`;
+            }else if (catalogueType === "shows"){
+                window.location.href = `/shows/${pageNumber + 1}`;
+            }
         });
     }
 }

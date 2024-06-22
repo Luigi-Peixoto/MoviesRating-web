@@ -148,7 +148,7 @@ app.get('/movie/:id', (req, res) => {
 });
 
 app.get('/show/:id', (req, res) => {
-  res.render('show-page');
+  res.render('movie-page');
 });
 
 app.get('/movies/:page', (req, res) => {

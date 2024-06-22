@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Roboto&display=swap');
+
 footer {
     font-family: serif;
     position: absolute;
@@ -5,4 +7,8 @@ footer {
     background-color: darkred;
     width: 100%;
     text-align: center;
+}
+footer > p {
+    font-family: 'Roboto', sans-serif;
+    color: black;
 }

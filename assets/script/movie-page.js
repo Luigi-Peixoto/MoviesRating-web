@@ -4,8 +4,14 @@ document.addEventListener('DOMContentLoaded', () => {
   const path = window.location.pathname;
   const movieId = path.split('/').pop();
   
-  const url = `https://api.themoviedb.org/3/movie/${movieId}?api_key=${APIKey}&language=pt-BR`;
-  
+  var url = "";
+  const movieUrl = `https://api.themoviedb.org/3/movie/${movieId}?api_key=${APIKey}&language=pt-BR`;
+  const showUrl = `https://api.themoviedb.org/3/tv/${movieId}?api_key=${APIKey}`;
+  if(path.startsWith("/movie")){
+    url = movieUrl;
+  }else{
+    url = showUrl;
+  }
   createMovieContent(url)
   loadComments(movieId);
 });
@@ -25,7 +31,7 @@ function  createMovieContent(url){
         const movie = JSON.parse(xhr.responseText);
 
         if (movie) {
-          movieTitle.textContent = movie.title;
+          movieTitle.textContent = movie.title || movie.name;
           movieImg.src = `https://image.tmdb.org/t/p/w500/${movie.poster_path}`;
           movieImg.alt = "";
           movieDesc.textContent = movie.overview;
@@ -51,23 +57,35 @@ function  createMovieContent(url){
   
 function loadComments(movieId) {
   var xhr = new XMLHttpRequest();
-  var url = '../data/moviesComments.json'; 
+  var url = '../data/comments.json'; 
 
   xhr.onreadystatechange = function() {
     if (xhr.readyState === XMLHttpRequest.DONE) {
       if (xhr.status === 200) {
         var data = JSON.parse(xhr.responseText);
-        for (var id in data.comments){
-          if(id === movieId){
-            if (data.comments.hasOwnProperty(id)) {
-              var comments = data.comments[id];
-              if (comments.length > 0) {
-                console.log(id)
-                console.log(comments)
+        if(window.location.pathname.startsWith("/movie")){
+          for (var id in data.movies){
+            if(id === movieId){
+              if (data.movies.hasOwnProperty(id)) {
+                var comments = data.movies[id];
+                if (comments.length > 0) {
+                  createCommentCards(comments);
+                }
               }
-              createCommentCards(comments);
+              return;
             }
-            return;
+          }
+        }else if (window.location.pathname.startsWith("/show")){
+          for (var id in data.comments.shows){
+            if(id === movieId){
+              if (data.shows.hasOwnProperty(id)) {
+                var comments = data.shows[id];
+                if (comments.length > 0) {
+                  createCommentCards(comments);
+                }
+              }
+              return;
+            }
           }
         }
       } else {
