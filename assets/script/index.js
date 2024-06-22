@@ -1,6 +1,7 @@
 import APIKey from '../config/key.js';
 const imagePath = 'https://image.tmdb.org/t/p/w500';
 const topContent = document.getElementById("top-content");
+const loading = document.getElementById("loading");
 let movies = [];
 
 // Função para buscar dados da API
@@ -16,9 +17,11 @@ function fetchMovies(url, sectionTitle, type) {
               description: movie.overview
           }));
           appendSection(sectionTitle, movies, type);
+          checkLoadingStatus();
       })
       .catch(error => {
           console.error(`Ocorreu um erro ao obter ${sectionTitle.toLowerCase()}`);
+          checkLoadingStatus();
       });
 }
 
@@ -28,8 +31,9 @@ const urls = [
   { url: `https://api.themoviedb.org/3/tv/popular?api_key=${APIKey}`, title: "Series Populares", type: `serie`},
   { url: `https://api.themoviedb.org/3/tv/top_rated?api_key=${APIKey}&language=pt-BR`, title: "Melhores Series", type: `serie` }
 ];
-
+let pendingRequests = urls.length;
 urls.forEach(({ url, title, type }) => fetchMovies(url, title, type));
+
 
 function appendSection(title, items, type) {
     const section = document.createElement("section");
@@ -86,3 +90,11 @@ function createCard(id, title, rating, image, description) {
     return card;
 } 
 
+function checkLoadingStatus() {
+    pendingRequests--;
+    console.log(pendingRequests)
+    if (pendingRequests === 0) {
+        topContent.style.display = 'block';
+        loading.style.display = 'none';
+    }
+}
