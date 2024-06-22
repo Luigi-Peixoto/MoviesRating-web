@@ -1,0 +1,20 @@
+[
+  {
+    "id": 1719002303129,
+    "fullName": "luigi",
+    "username": "luigi",
+    "email": "luigi",
+    "password": "luigi",
+    "gender": "male",
+    "comments": []
+  },
+  {
+    "id": 1719004439575,
+    "fullName": "Luciano",
+    "username": "luciano",
+    "email": "luciano",
+    "password": "luciano",
+    "gender": "male",
+    "comments": []
+  }
+]
