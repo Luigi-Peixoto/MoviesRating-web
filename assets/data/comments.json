@@ -1,14 +1,6 @@
 {
     "movies": {
-      "i1022789": [
-          {
-            "username": "VitorPinto",
-            "rating": "like",
-            "description": "Gostei muito desse filme. Me identifiquei bastante com os novos personagems!"
-          }
-        ]
     },
     "shows":{
-
     }
-  }
+}
