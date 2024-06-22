@@ -16,12 +16,10 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     fetchMovies(mediaUrl);
-
-
 });
 
+
 function fetchMovies(mediaUrl) {
-    const imagePath = 'https://image.tmdb.org/t/p/w500';
 
     const movieImg = document.getElementById("selected-movie-img");
     const movieTitle = document.getElementById("selected-movie-title");
@@ -30,7 +28,7 @@ function fetchMovies(mediaUrl) {
     fetch(mediaUrl)
         .then(response => response.json())
         .then(data => {
-            movieTitle.innerHTML = data.title;
+            movieTitle.innerHTML = data.title || data.name;
             movieImg.src = `https://image.tmdb.org/t/p/w500/${data.poster_path}`;
         })
         .catch(error => {
