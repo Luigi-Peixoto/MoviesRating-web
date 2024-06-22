@@ -17,12 +17,11 @@ document.addEventListener("DOMContentLoaded", () => {
         xhrCheck.onreadystatechange = function() {
             if (xhrCheck.readyState === XMLHttpRequest.DONE) {
                 if (xhrCheck.status === 200) {
-                    document.getElementById("user-header").style.display = "block";
                     document.getElementById("register-button").style.display = "none";
                     document.getElementById("login-dropdown-button").style.display = "none";
-                    if(getCookie('username')){
-                        document.getElementById("username-header").textContent = getCookie('username');
-                    }
+                    document.getElementById("logout-button").style.display = "block";
+                    document.getElementById("username-header").style.display = "block";
+                    document.getElementById("username-header").textContent = getCookie('username');
                 } else if (xhrCheck.status === 401) {
                     if(window.location.pathname.endsWith("/rate")){
                         alert("Você precisa estar Logado para comentar!");
@@ -40,7 +39,8 @@ document.addEventListener("DOMContentLoaded", () => {
             if (xhr.readyState === XMLHttpRequest.DONE) {
                 if (xhr.status === 200) {
                     alert("Logout efetuado com sucesso!");
-                    document.getElementById("user-header").style.display = "none";
+                    document.getElementById("logout-button").style.display = "none";
+                    document.getElementById("username-header").style.display = "none";
                     document.getElementById("register-button").style.display = "block";
                     document.getElementById("login-dropdown-button").style.display = "block";
                     parent.location.reload();
