@@ -16,3 +16,16 @@ textarea {
     color: orange;
     font-size: 30px;
 }
+
+.banner {
+    width: 20%;
+}
+
+.movie-form {
+    display: flex;
+}
+
+.form {
+    width: 100%;
+    margin: 2%;
+}
