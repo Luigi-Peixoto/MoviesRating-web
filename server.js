@@ -188,6 +188,9 @@ app.post('/show/:id/rate', (req, res) => {
 });
 
 function addRating(req, res, mediaType) {
+  let id = req.body.id;
+  let movieId = 'i'+id;
+  const username = req.body.username;
   const rating = req.body.rating;
   const description = req.body.description;
 
@@ -205,28 +208,37 @@ function addRating(req, res, mediaType) {
     if(!err) {
       dataArray = JSON.parse(data)
       if(mediaType === "movie") {
-        dataArray = dataArray.movies;
+        section = dataArray.movies;
       } else if(mediaType === "show") {
-        dataArray = dataArray.shows;
+        section = dataArray.shows;
       }
     }
-    console.log(req.body)
 
-    let newRating = { username: "test", rating: rating, description: description}
+    let newRating = { "username": username, "rating": rating, "description": description}
+    if (section[movieId]) {
+      section[movieId].unshift(newRating);
+     } else {
+      section[movieId] = [newRating];
+    }
 
-    const id = "i1022789"
-
-    console.log(dataArray.id)
-    /*
-    fs.writeFile(commentsPath, JSON, stringify(dataArray, null, 2), (err) => {
-      if(err) {
-        console.error('Erro ao escrever no arquivo de comentários:', err);
-        return res.status(500).send('Erro ao salvar o comentário');
-      }
+    if(mediaType === "movie") {
+      dataArray.movies = section;
+    } else if(mediaType === "show") {
+      dataArray.shows = section;
+    }
+    
+    fs.writeFile(commentsPath
+      , JSON.stringify(dataArray, null, 2), (err) => {
+        if (err) {
+            console.error('Erro ao salvar os dados em arquivo:', err);
+            return res.status(500).send('Erro ao salvar os dados em arquivo');
+        } else {
+            console.log('Dados salvos em arquivo com sucesso');
+            return res.status(200).send('Dados salvos em arquivo com sucesso');
+        }
     });
-    */
-    res.redirect("/");
   });
+  res.redirect("/");
 }
 
 app.listen(PORT, () => {
