@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Roboto&display=swap');
 header {
     display: flex;
     flex-wrap: wrap;
@@ -91,5 +92,53 @@ header a {
         display: block;
         order: 3;
         margin-top: 20px;
+    }
+}
+
+#user-header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#username-header {
+    text-align: center;
+    color: black;
+    font-family: "Archivo Black", sans-serif;
+    font-size: 24px;
+    margin: 0;
+    text-decoration: underline;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+#logout-button {
+    padding: 10px;
+    background-color: #e74c3c; /* cor de fundo vermelha */
+    color: white;
+    border: none;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    cursor: pointer;
+    font-size: 18px;
+    font-family: 'Roboto', sans-serif;
+    transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+}
+
+#logout-button:hover {
+    background-color: #c0392b; /* cor de fundo ao passar o mouse */
+    transform: translateY(-2px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+#logout-button:focus,
+#logout-button:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.3);
+}
+
+@media screen and (max-width: 600px) {
+    #user-header {
+        display: none;
     }
 }
