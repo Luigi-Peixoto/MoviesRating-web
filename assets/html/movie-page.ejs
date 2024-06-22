@@ -84,9 +84,10 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     document.getElementById("rate-button").addEventListener("click", () => {
+        let mediaType = window.location.href.split("/")[3];
         let movieId = Number(window.location.href.split("/")[4]);
 
-        window.location.href = `/movie/${movieId}/rate`;
+        window.location.href = `/${mediaType}/${movieId}/rate`;
     });
 
 });

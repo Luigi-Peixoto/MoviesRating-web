@@ -160,13 +160,13 @@ app.get('/shows/:page', (req, res) => {
 });
 
 app.get('/movie/:id/rate', (req, res) => {
-  const movieId = req.params.page;
+  const movieId = req.params.id;
   
   res.render('rate', { mediaType: "movie", id: movieId});
 });
 
 app.get('/show/:id/rate', (req, res) => {
-  const showId = req.params.page;
+  const showId = req.params.id;
   
   res.render('rate', { mediaType: "show", id: showId});
 });
