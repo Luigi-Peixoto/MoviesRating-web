@@ -3,35 +3,8 @@
       "i1022789": [
           {
             "username": "VitorPinto",
-            "description": "Gostei muito desse filme. Me identifiquei bastante com os novos personagems!",
-            "rating": "like"
-          },
-          {
-            "username": "Giovanni1337",
-            "description": "A ideia do filme foi boa, mas a execução deixou a desejar! Achei muito exagerado a parte da ansiedade. Não gostei!",
-            "rating": "dislike"
-          },
-          {
-            "username": "renata",
-            "description": "Assisti o Filme ontem e simplesmente adorei!",
-            "rating": "like"
-          },
-          {
-            "username": "luigi",
-            "description": "Outro comentário aqui",
-            "rating": "dislike"
-          },
-          {
-            "username": "elsoka",
-            "description": "Outro comentário aqui",
-            "rating": "dislike"
-          }
-        ],
-      "i653346":  [
-          {
-              "username": "luigi",
-              "description": "Outro comentário aqui",
-              "rating": "dislike"
+            "rating": "like",
+            "description": "Gostei muito desse filme. Me identifiquei bastante com os novos personagems!"
           }
         ]
     },
