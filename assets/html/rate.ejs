@@ -16,25 +16,21 @@
     <%- include('header') %>
     <main data-media-type="<%- mediaType %>" data-id="<%- id %>">
         <h1>Avalie um filme!</h1>
-        <form id="register-form" name="register-form">
+        <article class="movie-form">
             <img id="selected-movie-img" class="banner" src="/images/imageError.png" alt="Image of the selected movie">
-            <h1 id="movie-title"></h1>
-            <br><br>
-
-            Star Rating
-            <div class="star-rating">
-                <span class="fa fa-star checked-star"></span>
-                <span class="fa fa-star checked-star"></span>
-                <span class="fa fa-star checked-star"></span>
-                <span class="fa fa-star checked-star"></span>
-                <span class="fa fa-star checked-star"></span>
-            </div>
-            <br>
-
-            Descrição:<br> 
-            <textarea id="rating-description" class="rating-description" placeholder="Disserte a respeito da sua avaliação (Opcional)"></textarea><br><br>
-
-            <input type="submit" class="register-submit"style="color: black;">
+            <form id="register-form" name="register-form" class="form">
+                <h1 id="selected-movie-title"></h1>
+    
+                Rating <br>
+                <input type="radio" id="like" name="rating">
+                <input type="radio" id="dislike" name="rating">
+                <br>
+    
+                Descrição:<br> 
+                <textarea id="rating-description" class="rating-description" placeholder="Disserte a respeito da sua avaliação (Opcional)"></textarea><br><br>
+    
+                <input type="submit" class="register-submit"style="color: black;">
+        </article>
     </main>
     <%- include('footer') %>
 </body>

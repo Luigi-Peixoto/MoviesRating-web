@@ -120,6 +120,7 @@ function createCommentCards(comments) {
     const author = document.createElement('p');
     author.classList.add("comment-author");
     author.textContent = comment.username;
+
     const image = document.createElement('i');
     image.classList.add("comment-img");
     image.classList.add("fa-regular");
@@ -127,6 +128,7 @@ function createCommentCards(comments) {
       image.classList.add("fa-thumbs-up");
     } else {
       image.classList.add("fa-thumbs-down");
+
     }
 
     cardTop.appendChild(author);

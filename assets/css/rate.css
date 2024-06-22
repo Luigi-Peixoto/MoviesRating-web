@@ -6,6 +6,7 @@ textarea {
 .rating-description {
     width: 50%;
     min-height: 200px;
+    font-size: 15px;
 }
 
 .star-rating {
@@ -15,4 +16,19 @@ textarea {
 .checked-star {
     color: orange;
     font-size: 30px;
+}
+
+.banner {
+    height: fit-content;
+    width: 20%;
+}
+
+.movie-form {
+    display: flex;
+
+}
+
+.form {
+    width: 100%;
+    margin: 2%;
 }
