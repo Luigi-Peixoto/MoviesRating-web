@@ -1,6 +1,7 @@
 main {
     margin: 40px 3%;
     font-family: Restora;
+    min-height: 50rem;
 }
 
 .register-text {
