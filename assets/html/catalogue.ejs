@@ -9,7 +9,6 @@
     <link rel="stylesheet" href="/css/catalogue.css">
     <title>Rate - Movies</title>
     <script type="module" src="/script/catalogue.js"></script>
-    
 </head>
 <body>
     <%- include('header') %>
@@ -18,6 +17,9 @@
         <h1>Todos os filmes</h1>
         <button id="last-page" class="page-button">Last page</button>
         <button id="next-page" class="page-button">Next page</button>
+        <div id="loading">
+            <img src="http://media.giphy.com/media/FwviSlrsfa4aA/giphy.gif" alt="Loading...">
+        </div>
     </main>
 
     <%- include('footer') %>

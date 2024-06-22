@@ -13,6 +13,15 @@
 #searchbar {
     position: relative;
     width: 100%;
+    border: 1px solid #ddd;
+    border-radius: 25px;
+    outline: none;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+#searchbar:hover {
+    box-shadow: 0 0 8px rgba(0, 123, 255, 0.2);
 }
 
 #search-content input[type="search"] {
@@ -24,20 +33,23 @@
 #searchResults {
     display: none;
     position: absolute;
-    top: 100%; /* Faz o topo do #searchResults alinhar com o fundo do #searchbar */
-    width: 92%; /* Ajuste conforme necessário */
+    top: 100%;
+    width: 92%;
     background-color: #f6f6f6;
     flex-direction: column;
     z-index: 1;
     height: 600px;
     max-height: 600px;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    border-bottom-left-radius: 10px ;
+    border-bottom-right-radius: 10px ;
 }
 
 .search-result {
     display: flex;
     flex-direction: row;
-    height: 33%; /* Ajustado para mostrar até 5 resultados em 400px de altura */
+    height: 33%;
+    width: 100%;
     border-top: none;
     border-color: lightgray;
     border-style: solid;
@@ -53,14 +65,15 @@
 .result-content {
     display: flex;
     flex-direction: column;
-    width: 50%;
+    width: 70%;
+    right: 0%;
     justify-content: center;
     align-items: center;
 }
 
 .search-result img {
-    width: 50%;
-    height: 100%;
-    display: block;
+    width: 30%;
+    height: auto;
+    border-radius: 5px;
     object-fit: cover;
 }

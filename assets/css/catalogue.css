@@ -40,3 +40,16 @@
     background-color: #c4463d;
     cursor: pointer;
 }
+
+#loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 50rem;
+  }
+  
+  #loading img {
+    width: 200px;
+    height: auto;
+  }

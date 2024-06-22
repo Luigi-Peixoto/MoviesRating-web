@@ -9,15 +9,15 @@ const imagePath = 'https://image.tmdb.org/t/p/w500';
 
 let type =  window.location.href.split("/")[3];
 initPageButtons(type);
-
+const loading = document.getElementById('loading');
 createContainer();
 
 async function createContainer() {
     const container = document.createElement("div");
     container.setAttribute("id", "card-container");
-    
+    container.style.display = 'none';
     let catalogueType =  window.location.href.split("/")[3];
-
+    
     const contentResults = await fetchMovies(catalogueType);
     contentResults.forEach(content => {
         container.appendChild(createCard(content, catalogueType));
@@ -25,9 +25,11 @@ async function createContainer() {
 
     const main = document.querySelector("main");
     main.appendChild(container);
+    
+    container.style.display = 'flex';
+    loading.style.display = 'none';
 }
 
-//retorna card do filme
 function createCard(content, catalogueType) {
     const card = document.createElement("div");
     card.classList.add("card");
