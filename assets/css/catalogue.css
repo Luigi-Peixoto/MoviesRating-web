@@ -7,13 +7,23 @@
     width: 15%;
     margin: 2%;
     transition: all 0.8s cubic-bezier(0.15, 0.83, 0.66, 1);
+    border-radius: 10px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
 }
-
+.card-title {
+    font-weight: bold;
+    font-size: 18px;
+}
 .movie-img {
     width: 100%;
+    border-radius: 10px;
 }
 
 .card:hover {
+    cursor: pointer;
     transform: scale(1.05);
 }
   
@@ -28,4 +38,5 @@
 
 .page-button:hover {
     background-color: #c4463d;
+    cursor: pointer;
 }

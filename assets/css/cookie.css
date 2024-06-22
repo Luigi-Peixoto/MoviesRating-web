@@ -1,0 +1,103 @@
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(100%);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.card-cookie {
+    position: fixed;
+    bottom: 20px;
+    left: 45%;
+    width: 300px;
+    max-width: 90%;
+    height: auto;
+    background-color: #fff;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px 30px;
+    gap: 13px;
+    overflow: hidden;
+    box-shadow: 2px 2px 20px rgba(0, 0, 0, 0.062);
+    z-index: 20;
+    opacity: 0;
+    animation: fadeInUp 1s ease-out 1s forwards;
+}
+
+#cookieSvg {
+    width: 50px;
+    height: auto;
+}
+
+.cookieHeading {
+    font-size: 1.2em;
+    font-weight: 800;
+    color: #1a1a1a;
+    text-align: center;
+}
+
+.cookieDescription {
+    text-align: center;
+    font-size: 0.9em;
+    font-weight: 600;
+    color: #636363;
+    margin: 0 10px;
+}
+
+.cookieDescription a {
+    color: #3b82f6;
+}
+
+.cookieDescription a:hover {
+    text-decoration-line: underline;
+}
+
+.buttonContainer {
+    display: flex;
+    gap: 10px;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.acceptButton, .declineButton {
+    width: 80px;
+    height: 30px;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+    border-radius: 20px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.1);
+    transition: all 0.2s ease;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Garante que o texto do botão esteja centrado */
+}
+
+.acceptButton {
+    background-color: rgb(141, 6, 6);
+    color: #f1f1f1;
+}
+
+.acceptButton:hover {
+    background-color: rgb(175, 3, 3);
+}
+
+.declineButton {
+    background-color: #dadada;
+    color: #2e2e2e;
+    cursor: not-allowed; /* Remove cursor pointer para não clicar */
+}
+
+.declineButton:hover {
+    background-color: #ebebeb;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.1);
+}
