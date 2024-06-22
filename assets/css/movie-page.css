@@ -136,7 +136,7 @@
 }
 
 .text-temp {
-    font-size: 30px;
+    font-size: 25px;
     font-family: "Archivo Black", sans-serif;
 }
 
@@ -148,7 +148,24 @@
     height: 75rem;
   }
   
-  #loading img {
+#loading img {
     width: 200px;
     height: auto;
-  }
+}
+
+#rate-button {
+    background-color: #eee;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-family: "Archivo Black", sans-serif;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease;
+}
+
+#rate-button:hover {
+    background-color: lightblue;
+}

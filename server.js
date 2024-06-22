@@ -3,6 +3,8 @@ const cookieParser = require('cookie-parser');
 const path = require('path')
 const fs = require('fs');
 const bodyParser = require('body-parser');
+const { log } = require('console');
+const { stringify } = require('querystring');
 
 const app = express();
 const PORT = 8080;
@@ -28,15 +30,18 @@ app.get('/register', (req, res) => {
 app.post('/register', (req, res) => {
   const newData = req.body;
 
-  const filePath = path.join(__dirname, 'assets', 'data', 'data.json');
+  const commentsPath
+   = path.join(__dirname, 'assets', 'data', 'data.json');
 
   // Ler o conteúdo atual do arquivo data.json
-  fs.readFile(filePath, 'utf8', (err, data) => {
+  fs.readFile(commentsPath
+    , 'utf8', (err, data) => {
       if (err) {
           if (err.code === 'ENOENT') {
               // Se o arquivo não existir, cria um novo array com os novos dados
               const dataArray = [newData];
-              fs.writeFile(filePath, JSON.stringify(dataArray, null, 2), (err) => {
+              fs.writeFile(commentsPath
+                , JSON.stringify(dataArray, null, 2), (err) => {
                   if (err) {
                       console.error('Erro ao salvar os dados em arquivo:', err);
                       return res.status(500).send('Erro ao salvar os dados em arquivo');
@@ -72,7 +77,8 @@ app.post('/register', (req, res) => {
           res.cookie('username', newData.username, { maxAge: 30 * 24 * 60 * 60 * 1000 });
           
           // Gravar o array atualizado de volta no arquivo
-          fs.writeFile(filePath, JSON.stringify(dataArray, null, 2), (err) => {
+          fs.writeFile(commentsPath
+            , JSON.stringify(dataArray, null, 2), (err) => {
               if (err) {
                   console.error('Erro ao salvar os dados em arquivo:', err);
                   return res.status(500).send('Erro ao salvar os dados em arquivo');
@@ -87,9 +93,11 @@ app.post('/register', (req, res) => {
 
 app.post('/login', (req, res) => {
   const newData = req.body;
-  const filePath = path.join(__dirname, 'assets', 'data', 'data.json');
+  const commentsPath
+   = path.join(__dirname, 'assets', 'data', 'data.json');
 
-  fs.readFile(filePath, 'utf8', (err, data) => {
+  fs.readFile(commentsPath
+    , 'utf8', (err, data) => {
     if (err) {
       if (err.code === 'ENOENT') {
         // Se o arquivo não existir, o usuário não existe
@@ -170,6 +178,68 @@ app.get('/show/:id/rate', (req, res) => {
   
   res.render('rate', { mediaType: "show", id: showId});
 });
+
+app.post('/movie/:id/rate', (req, res) => {
+  return addRating(req, res, "movie");
+});
+
+app.post('/show/:id/rate', (req, res) => {
+  return addRating(req, res, "show");
+});
+
+function addRating(req, res, mediaType) {
+  let id = req.body.id;
+  let movieId = 'i'+id;
+  const username = req.body.username;
+  const rating = req.body.rating;
+  const description = req.body.description;
+
+  const commentsPath
+   = path.join(__dirname, 'assets', 'data', 'comments.json');
+  
+  fs.readFile(commentsPath
+    , "utf8", (err, data) => {
+    if(err && err.code !== "ENOENT") {
+      console.error('Erro ao ler o arquivo de comentários:', err);
+      return res.status(500).send('Erro ao salvar os dados em arquivo');
+    }
+
+    let dataArray = [];
+    if(!err) {
+      dataArray = JSON.parse(data)
+      if(mediaType === "movie") {
+        section = dataArray.movies;
+      } else if(mediaType === "show") {
+        section = dataArray.shows;
+      }
+    }
+
+    let newRating = { "username": username, "rating": rating, "description": description}
+    if (section[movieId]) {
+      section[movieId].unshift(newRating);
+     } else {
+      section[movieId] = [newRating];
+    }
+
+    if(mediaType === "movie") {
+      dataArray.movies = section;
+    } else if(mediaType === "show") {
+      dataArray.shows = section;
+    }
+    
+    fs.writeFile(commentsPath
+      , JSON.stringify(dataArray, null, 2), (err) => {
+        if (err) {
+            console.error('Erro ao salvar os dados em arquivo:', err);
+            return res.status(500).send('Erro ao salvar os dados em arquivo');
+        } else {
+            console.log('Dados salvos em arquivo com sucesso');
+            return res.status(200).send('Dados salvos em arquivo com sucesso');
+        }
+    });
+  });
+  res.redirect("/");
+}
 
 app.listen(PORT, () => {
   console.log(`Servidor rodando em http://localhost:${PORT}/`);

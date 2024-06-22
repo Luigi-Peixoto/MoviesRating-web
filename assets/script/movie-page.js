@@ -71,7 +71,7 @@ function loadComments(movieId) {
         const data = JSON.parse(xhr.responseText);
         if (window.location.pathname.startsWith("/movie")) {
           for (const id in data.movies) {
-            if (id === movieId) {
+            if (id.substring(1) === movieId) {
               if (data.movies.hasOwnProperty(id)) {
                 const comments = data.movies[id];
                 if (comments.length > 0) {
@@ -84,7 +84,7 @@ function loadComments(movieId) {
           }
         } else if (window.location.pathname.startsWith("/show")) {
           for (const id in data.shows) {
-            if (id === movieId) {
+            if (id.substring(1) === movieId) {
               if (data.shows.hasOwnProperty(id)) {
                 const comments = data.shows[id];
                 if (comments.length > 0) {
@@ -124,7 +124,7 @@ function createCommentCards(comments) {
     const image = document.createElement('i');
     image.classList.add("comment-img");
     image.classList.add("fa-regular");
-    if (comment.type === "like") {
+    if (comment.rating === "like") {
       image.classList.add("fa-thumbs-up");
     } else {
       image.classList.add("fa-thumbs-down");
@@ -136,7 +136,7 @@ function createCommentCards(comments) {
 
     const text = document.createElement('p');
     text.classList.add("comment-text");
-    text.textContent = comment.text;
+    text.textContent = comment.description;
 
     card.appendChild(cardTop);
     card.appendChild(text);
