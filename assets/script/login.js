@@ -24,8 +24,9 @@ document.addEventListener("DOMContentLoaded", () => {
                         document.getElementById("username-header").textContent = getCookie('username');
                     }
                 } else if (xhrCheck.status === 401) {
-                    if(window.location.pathname.startsWith("/rate")){
-                        alert("Usuário não está logado.");
+                    if(window.location.pathname.endsWith("/rate")){
+                        alert("Você precisa estar Logado para comentar!");
+                        window.location.href = "/";
                     }
                 }
             }

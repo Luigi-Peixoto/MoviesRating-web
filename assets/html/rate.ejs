@@ -4,9 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" 
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <link rel="stylesheet" href="/css/style.css">
-    <link rel="stylesheet" href="/css/main.css">
     <link rel="stylesheet" href="/css/rate.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script type="module" src="/script/rate.js"></script>
@@ -16,24 +17,48 @@
     <%- include('header') %>
     <main data-media-type="<%- mediaType %>" data-id="<%- id %>">
         <h1>Avalie um filme!</h1>
-        <article class="movie-form">
-            <img id="selected-movie-img" class="banner" src="/images/imageError.png" alt="Image of the selected movie">
-            <form id="register-form" name="register-form" class="form">
-                <h1 id="selected-movie-title"></h1>
-    
-                Rating <br>
-                <input type="radio" id="like" name="rating">
-                <label for="like">Gostei</label>
-                <input type="radio" id="dislike" name="rating">
-                <label for="dislike">Não gostei</label>
-                <br>
-    
-                Descrição:<br> 
-                <textarea id="rating-description" class="rating-description" placeholder="Disserte a respeito da sua avaliação (Opcional)"></textarea><br><br>
-    
-                <input type="submit" class="register-submit"style="color: black;">
+        <article id="top-content">
+            <div id="left-content">
+                <img id="selected-movie-img" class="banner" src="/images/imageError.png" alt="">
+            </div>
+            <div id="right-content">
+                <p id="selected-movie-title"> Não foi possível acessar a Série</p>
+                <form id="register-form" name="register-form" class="form">
+                    <div class="forms-options">
+                        <div class="icon-option" data-value="like">
+                            <i class="fa-regular fa-thumbs-up"></i>
+                            <label for="like"><p>Gostei</p></label>
+                        </div>
+                        <div class="icon-option" data-value="dislike">
+                            <i class="fa-regular fa-thumbs-down"></i>
+                            <label for="dislike"><p>Não Gostei</p></label>
+                        </div>
+                    </div>
+                    <input type="hidden" id="rating" name="rating">
+                    <textarea id="rating-description" class="rating-description" placeholder="Disserte a respeito da sua avaliação (Opcional)"></textarea><br>
+                    <input type="submit" class="register-submit">
+                </form>
+                
+            </div>
         </article>
     </main>
     <%- include('footer') %>
 </body>
 </html>
+<script>
+function printForm(formData) {
+    console.log(formData); 
+}
+document.addEventListener('DOMContentLoaded', function () {
+    const iconOptions = document.querySelectorAll('.icon-option');
+    const ratingInput = document.getElementById('rating');
+
+    iconOptions.forEach(option => {
+        option.addEventListener('click', function () {
+            iconOptions.forEach(opt => opt.classList.remove('selected'));
+            this.classList.add('selected');
+            ratingInput.value = this.getAttribute('data-value');
+        });
+    });
+});
+</script>
