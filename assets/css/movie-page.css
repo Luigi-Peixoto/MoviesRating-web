@@ -72,8 +72,8 @@
     width: 100%;
     height: 400px;
     display: flex;
-    flex-direction: column; /* Mantém os cards em linha */
-    justify-content: center; /* Alinha os cards no início */
+    flex-direction: column;
+    justify-content: center;
     align-items: center;
 }
 
@@ -81,12 +81,12 @@
     width: 100%;
     height: 80%;
     display: flex;
-    flex-direction: row; /* Mantém os cards em linha */
-    justify-content: left; /* Alinha os cards no início */
-    padding: 10px; /* Adiciona espaçamento interno */
-    overflow-x: auto; /* Adiciona rolagem horizontal se necessário */
-    -ms-overflow-style: none;  /* IE and Edge */
-    scrollbar-width: none;  /* Firefox */
+    flex-direction: row;
+    justify-content: left;
+    padding: 10px;
+    overflow-x: auto;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
     cursor: grab;
 }
 #comment-content::-webkit-scrollbar {
@@ -168,4 +168,50 @@
 
 #rate-button:hover {
     background-color: lightblue;
+}
+@media (min-width: 769px) and (max-width: 1100px) {
+    #top-content {
+        align-items: center;
+        justify-content: center;
+    }
+    .banner {
+        width: 80%;
+    }
+}
+@media (max-width: 768px) {
+    #top-content{
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    .banner {
+        width: 100%;
+    }
+    #movie-title {
+        font-size: 200%;
+    }
+    #movie-rate, #movie-description {
+        font-size: 18px;
+    }
+    .comment-card {
+        width: 300px;
+        height: auto;
+    }
+}
+
+@media (max-width: 480px) {
+    #rate {
+        flex-direction: column;
+    }
+    .star {
+        width: 15px;
+        height: 15px;
+    }
+    .comment-author, .comment-text {
+        font-size: 16px;
+    }
+    #rate-button {
+        font-size: 14px;
+        padding: 8px 16px;
+    }
 }

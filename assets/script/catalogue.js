@@ -88,7 +88,7 @@ function initPageButtons(catalogueType) {
     let pageNumber = Number(window.location.href.split("/")[4]);
 
     if(pageNumber === 1) {
-        lastPageButton.style.color = "transparent";
+        lastPageButton.style.visibility = "hidden";
     } else {
         lastPageButton.addEventListener("click", () => {
             if(catalogueType === "movies"){
@@ -100,7 +100,7 @@ function initPageButtons(catalogueType) {
     }
     
     if(pageNumber === 500) {
-        nextPageButton.style.color = "transparent";
+        nextPageButton.style.visibility = "hidden";
     } else {
         nextPageButton.addEventListener("click", () => {
             if(catalogueType === "movies"){

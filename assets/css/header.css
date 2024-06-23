@@ -68,7 +68,6 @@ header p{
 }
 
 #register-button {
-    display: none;
     font-family: 'Roboto', sans-serif;
     padding: 10px 10%;
     background-color: lightgray;
@@ -83,6 +82,7 @@ header p{
 }
 
 #logout-button {
+    display: none;
     font-family: 'Roboto', sans-serif;
     padding: 10px 10%;
     background-color: lightgray;
@@ -102,6 +102,13 @@ header p{
     display: none;
 }
 
+@media screen and (max-width: 1024px) and (min-width: 600px) {
+    
+}
+
+@media screen and (max-width: 599px) {
+    
+}
 @media screen and (max-width: 800px) {
 
     #logo {
@@ -110,8 +117,6 @@ header p{
     
     #searchbar {
         width: 100%;
-        display: block;
-        order: 3;
         margin-top: 20px;
     }
 }
