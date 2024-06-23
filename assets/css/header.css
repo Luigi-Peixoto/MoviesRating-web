@@ -102,21 +102,35 @@ header p{
     display: none;
 }
 
-@media screen and (max-width: 1024px) and (min-width: 600px) {
+@media screen and (min-width: 700px) {
     
 }
 
-@media screen and (max-width: 599px) {
-    
-}
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 699px) {
+
+    header {
+        flex-wrap: wrap;
+    }
 
     #logo {
         width: 20%;
+        order: 1;
     }
     
-    #searchbar {
-        width: 100%;
+    #authentication {
+        order: 2;
+    }
+
+    #search-content {
+        width: 90%;
         margin-top: 20px;
+        margin-left: auto;
+        margin-right: auto;
+        order: 3;
+        align-content: center;
+    }
+
+    .navbar-item {
+        background-color: brown;
     }
 }
