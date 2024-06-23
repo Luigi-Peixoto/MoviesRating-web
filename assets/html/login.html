@@ -32,7 +32,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 alert("Login efetuado com sucesso!");
                 parent.location.reload(); 
             } else if (xhr.status === 400){
-                alert("Nome de usuário não existente");
+                alert("Nome de usuário ou senha incorreto(a)");
             }
         }
     };
