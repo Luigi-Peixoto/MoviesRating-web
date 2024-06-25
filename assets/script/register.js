@@ -7,8 +7,7 @@ document.getElementById("register-form").addEventListener("submit", function(eve
         username: document.getElementById("username").value,
         email: document.getElementById("email").value,
         password: document.getElementById("password").value,
-        gender: document.querySelector('input[name="gender"]:checked').value,
-        comments: []
+        gender: document.querySelector('input[name="gender"]:checked').value
     };
 
     const xhr = new XMLHttpRequest();
