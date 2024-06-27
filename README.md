@@ -1,2 +1,3 @@
 # MoviesRating-web
-Web system of Movies rating with JavaScript, HTML and CSS
+Movie rating website. 
+Made with JavaScript, HTML/CSS, Node.js, Express.js.
